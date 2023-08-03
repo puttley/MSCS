@@ -11,7 +11,7 @@ Company: PITSCO Education LLC
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google" value="notranslate">
-  <title>PITSCO MSCS bot:</title>
+  <title>PITSCO MSCS Robot:</title>
   <link rel="stylesheet" href="style.css">
 
   <script src="./msl_blocks.js" defer></script>
@@ -748,23 +748,23 @@ function uploadCPcode(){
   if (port){
       if (checkcode) {
         window.alert("Press OK to upload code.")
-      //  serialWrite('\r\x03\x03'); // ctl c >> interrupt any code that is running
-      //  serialWrite('\r\x03\x03');
-          serialWrite('\x03');
-          serialWrite('\r');
+        serialWrite('\r\x03\x03'); // ctl c >> interrupt any code that is running
+        serialWrite('\r\x03\x03'); // have to do this twice - I don't know why...
+          serialWrite('\x03');     // send another ctl c interrupt (added for msl)
+          serialWrite('\r');       // send a return (added for msl)
         serialWrite('\x05');       // ctl e >> enter raw paste mode
         // get code from workspace and send it over serial stream
         var code = "code=r'''" + 'import MSL_CS as msl' + '\n' + Blockly.Python.workspaceToCode(Code.workspace) + 'while True:' + '\n' + '\t' + 'pass' + "'''";
         console.log(code); // print the code to the console
         var ccommand = code.replace(/\n/g, "\r");               /// i added
         serialWrite(ccommand);
+          serialWrite('\r');  // send a bunch of returns (needed for msl)
           serialWrite('\r');
           serialWrite('\r');
           serialWrite('\r');
           serialWrite('\r');
-          serialWrite('\r');
-        serialWrite('\x04');   // soft rebbot
-          serialWrite('\r');
+        serialWrite('\x04');  // soft rebbot
+          serialWrite('\r');  // and, another return (added for msl)
         var command = "with open('code.py','w') as f: f.write(code)"
         var ccommand = command.replace(/\n/g, "\r");               /// i added
         serialWrite(ccommand);    // send save code to filesystem

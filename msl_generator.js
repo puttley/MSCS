@@ -1,3 +1,107 @@
+Blockly.Python['program_begin'] = function(block) {
+  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.setEnableMotors()' + '\n'; // forces statement to top of code generator
+  var code = '\n';
+  return code;
+};
+
+
+Blockly.Python['program_end'] = function(block) {
+  var code = 'msl.endProgram()' + '\n';
+  return code;
+};
+
+
+Blockly.Python['motor_set_power'] = function(block) {
+  var dropdown_motor = block.getFieldValue('motor');
+  var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
+  if (dropdown_motor === "all"){
+    var code = 'msl.setMotorPowers(' + value_power + ',' + value_power + ',' + value_power + ',' + value_power + ')' + '\n';
+    return code;
+  }else{
+    var code = 'msl.setMotorPower(' + dropdown_motor + ',' + value_power + ')' + '\n';
+    return code;
+  }
+};
+
+
+Blockly.Python['motor_set_speed'] = function(block) {
+  var dropdown_motor = block.getFieldValue('motor');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  if (dropdown_motor === "all"){
+    var code = 'msl.setMotorSpeeds(' + value_speed + ',' + value_speed + ',' + value_speed + ',' + value_speed + ')' + '\n';
+    return code;
+  }else{
+    var code = 'msl.setMotorSpeed(' + dropdown_motor + ',' + value_speed + ')' + '\n';
+    return code;
+  }
+};
+
+
+Blockly.Python['motor_set_target'] = function(block,) {
+  var dropdown_motor = block.getFieldValue('motor');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  var dropdown_target = block.getFieldValue('target');
+  var value_position = Blockly.Python.valueToCode(block, 'position', Blockly.Python.ORDER_ATOMIC);
+  if (dropdown_motor === "all"){
+    if (dropdown_target === "count"){
+      var code = 'msl.setMotorTargets(' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position +')' + '\n';
+      return code;
+    }
+    if (dropdown_target === "degrees"){
+      var code = 'msl.setMotorDegrees(' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position + ',' + value_speed + ',' + value_position +')' + '\n';
+      return code;
+    }
+  }else{
+    if (dropdown_target === "count"){
+      var code = 'msl.setMotorTarget(' + dropdown_motor + ',' + value_speed + ',' + value_position + ')' + '\n';
+      return code;
+    }
+    if (dropdown_target === "degrees"){
+      var code = 'msl.setMotorDegree(' + dropdown_motor + ',' + value_speed + ',' + value_position + ')' + '\n';
+      return code;
+    }
+  }
+};
+
+
+Blockly.Python['servo_speed'] = function(block,) {
+  var dropdown_servo = block.getFieldValue('servo');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  if (dropdown_servo === "all"){
+    var code = 'msl.setServoSpeeds(' + value_speed + ',' + value_speed + ',' + value_speed + ',' + value_speed + ')' + '\n';
+    return code;
+  }else{
+    var code = 'msl.setServoSpeed(' + dropdown_servo + ',' + value_speed + ')' + '\n';
+    return code;
+  }
+};
+
+
+Blockly.Python['servo_position'] = function(block) {
+  var dropdown_servo = block.getFieldValue('servo');
+  var value_position = Blockly.Python.valueToCode(block, 'position', Blockly.Python.ORDER_ATOMIC);
+  if (dropdown_servo === "all"){
+    var code = 'msl.setServoPositions(' + value_position + ',' + value_position + ',' + value_position + ',' + value_position + ')' + '\n';
+    return code;
+  }else{
+    var code = 'msl.setServoPosition(' + dropdown_servo + ',' + value_position + ')' + '\n';
+    return code;
+  }
+};
+
+
+Blockly.Python['delay'] = function(block) {
+  var number_name = block.getFieldValue('NAME');
+  // TODO: Assemble Python into code variable.
+  var code = 'msl.time.sleep(' + number_name + ')\n';
+  return code;
+};
+
+
+
+
+
+
 
 Blockly.Python['move_distance'] = function(block) {
   var dropdown_direction = block.getFieldValue('direction');
@@ -178,12 +282,7 @@ Blockly.Python['sensor_line'] = function(block) {
   return [code, Blockly.Python.ORDER_NONE];
 };
 
-Blockly.Python['delay'] = function(block) {
-  var number_name = block.getFieldValue('NAME');
-  // TODO: Assemble Python into code variable.
-  var code = 'LUMA.time.sleep(' + number_name + ')\n';
-  return code;
-};
+
 
 Blockly.Python['pixel_animate'] = function(block) {
   var dropdown_animation = 'LUMA.' + block.getFieldValue('animation');
