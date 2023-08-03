@@ -1,0 +1,462 @@
+html, body {
+  height: 100%;
+  background-color: #263238;
+
+}
+
+body {
+  font-family: sans-serif;
+  margin: 0;
+  overflow: auto;
+  background-color: #263238;
+}
+
+.farSide {
+  text-align: right;
+  background-color: #263238;
+}
+
+html[dir="RTL"] .farSide {
+  text-align: left;
+
+}
+
+html {
+
+}
+
+.resp-container {
+    position: absolute;
+    overflow: hidden;
+    padding-top: 56.25%;
+    right: 50px;
+    bottom: 10px;
+}
+
+.resp-iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.myvideo{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  height: 200px;
+  width: 300px;
+
+}
+
+
+
+/* Blockly Toolbox styling*/
+/* Makes our label white. */
+.blocklyTreeLabel {
+  color: white;
+
+
+}
+/* Adds padding around the group of categories and separators. */
+.blocklyToolboxContents {
+  padding: .5em;
+  background-color: #263238;
+
+
+}
+/* Adds space between the categories, rounds the corners and adds space around the label. */
+.blocklyTreeRow {
+  padding: 3px;
+  margin-bottom: .5em;
+  border-radius: 4px;
+}
+
+
+
+
+/* Buttons */
+button {
+  margin: 5px;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  font-size: large;
+  background-color: #eee;
+  color: #000;
+}
+button.primary {
+  display: none;
+  border: 1px solid #dd4b39;
+  background-color: #dd4b39;
+  color: #fff;
+}
+button.primary>img {
+  opacity: 1;
+}
+button>img {
+  opacity: 0.6;
+  vertical-align: text-bottom;
+}
+button:hover>img {
+  opacity: 1;
+}
+button:active {
+  border: 1px solid #888 !important;
+}
+button:hover {
+  box-shadow: 2px 2px 5px #888;
+}
+button.disabled:hover>img {
+  opacity: 0.6;
+}
+button.disabled {
+  display: none;
+}
+button.notext {
+  font-size: 10%;
+}
+
+#saveBlocks{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#trashButton{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#saveCode{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+
+#REPL{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: true;
+}
+
+#loadBlocks{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#openBlocks{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+ #SerialSpeed{
+   display: none;
+ }
+
+#SerialConnectButton{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #FF3393;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#SerialDisconnectButton{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#reboot{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #817F86;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#uploadCP{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #817F86;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+#saveCP{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#pasteCP{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#controls_flow_statements{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#interrupt{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#CTLA{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#CTLB{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#CTLC{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#CTLD{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+#CTLE{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: none;
+}
+
+h1 {
+  font-weight: normal;
+  font-size: 120%;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: #fff;
+}
+
+#title{
+  display: none;
+}
+
+/* Tabs */
+
+#code_menu{
+  display: none;
+}
+
+#tab_json {
+  display: none;
+}
+#tab_dart {
+  display: none;
+}
+#tab_lua {
+  display: none;
+}
+#tab_php {
+  display: none;
+}
+#tab_xml {
+  display: none;
+}
+#tab_javascript {
+  display: none;
+}
+#tab_code {
+  display: none;
+}
+
+#tabRow>td {
+  border: 1px solid #ccc;
+  border-bottom: none;
+  border-top: none;
+}
+td.tabon {
+  border-bottom-color: #ddd !important;
+  background-color: #ddd;
+  padding: 5px 19px;
+  white-space: nowrap;
+
+}
+td.taboff {
+  cursor: pointer;
+  padding: 5px 19px;
+  background-color: #fff;
+}
+td.taboff:hover {
+  background-color: #75bde6;
+}
+td.tabmin {
+  border-top-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+}
+td.tabmax {
+  border-top-style: none !important;
+  border-left-style: none !important;
+  border-right-style: none !important;
+  width: 99%;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: right;
+
+}
+html[dir=rtl] td.tabmax {
+  text-align: left;
+
+}
+
+table {
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: #263238;
+}
+td {
+  padding: 0;
+  vertical-align: top;
+  background-color: #fff;
+
+}
+.content {
+  visibility: hidden;
+  margin: 0;
+  padding: 1ex;
+  position: absolute;
+  direction: ltr;
+}
+pre.content {
+  border: 1px solid #ccc;
+  overflow: scroll;
+}
+#content_blocks {
+  padding: 0;
+}
+.blocklySvg {
+  border-top: none !important;
+}
+#content_xml {
+  resize: none;
+  outline: none;
+  border: 1px solid #ccc;
+  font-family: monospace;
+  overflow: scroll;
+}
+#languageMenu {
+  display: none;
+  vertical-align: top;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 15px;
+}
+
+
+
+/* Buttons */
+button {
+  padding: 1px 10px;
+  margin: 1px 5px;
+}
+
+/* Sprited icons. */
+.icon21 {
+  height: 21px;
+  width: 21px;
+  background-image: url(icons.png);
+}
+.trash {
+  background-position: 0px 0px;
+}
+.link {
+  background-position: -21px 0px;
+}
+.run {
+  display: none;
+  background-position: -42px 0px;
+}
+
+@media (max-width: 710px) {
+  .tab_collapse {
+    display: none;
+  }
+  #tab_code {
+    display: table-cell;
+  }
+}
+
+/* Privacy link */
+.privacyLink {
+  display: none;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: small;
+  text-decoration: none;
+}
+
+
+#term {
+  display: none;
+}

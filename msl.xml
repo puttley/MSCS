@@ -1,0 +1,847 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">button_start</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+            <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+            <field name="FIELDNAME">button</field>
+            <field name="USER0">start</field>
+            <field name="CPU0">start</field>
+            <field name="USER1">up</field>
+            <field name="CPU1">up</field>
+            <field name="USER2">down</field>
+            <field name="CPU2">down</field>
+            <field name="USER3">right</field>
+            <field name="CPU3">right</field>
+            <field name="USER4">left</field>
+            <field name="CPU4">left</field>
+            <next>
+              <block type="field_static" id="b#YQFZsYE]WQS+-;{Aba">
+                <field name="TEXT">button is</field>
+                <next>
+                  <block type="field_dropdown" id="cDo:cNc6{=.kDKCWPYtO">
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">state</field>
+                    <field name="USER0">pressed</field>
+                    <field name="CPU0">true</field>
+                    <field name="USER1">unpressed</field>
+                    <field name="CPU1">false</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id=".?qcyYF+Xr:WpLXWJ~QW"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">servo_speed</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">set</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">servo</field>
+                <field name="USER0">servo_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">servo_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">servo_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">servo_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all servos</field>
+                <field name="CPU4">all</field>
+                <next>
+                  <block type="field_static" id="W7M7gL]s`bu}XHjZV35Y">
+                    <field name="TEXT">speed to</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_value" id="IfNv!-yD)}Nos~M.]Vuy">
+            <field name="INPUTNAME">speed</field>
+            <field name="ALIGN">LEFT</field>
+            <value name="TYPE">
+              <shadow type="type_null" id="uH*iC2f,E]wg9{{rSG%l"></shadow>
+              <block type="type_number" id="6asKG10t;N+*#IkK]BFB"></block>
+            </value>
+            <next>
+              <block type="input_dummy" id="v.A5G5%FX!@KsZ~x[Vf/">
+                <field name="ALIGN">LEFT</field>
+                <statement name="FIELDS">
+                  <block type="field_static" id="Lh*P$SM-Q_P6{gyLWU3i">
+                    <field name="TEXT">%</field>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT">set the servo speed. Range is 0 - 100.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">servo_position</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">move</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">servo</field>
+                <field name="USER0">servo_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">servo_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">servo_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">servo_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all servos</field>
+                <field name="CPU4">all</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="(k{*6{4.]G#fIjm_OSt~">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="=Q%sr$mV3`tL,|]v*wkg">
+                <field name="TEXT">position to</field>
+              </block>
+            </statement>
+            <next>
+              <block type="input_value" id="MxI,38MJPP+3khNz8-Qt">
+                <field name="INPUTNAME">position</field>
+                <field name="ALIGN">LEFT</field>
+                <value name="TYPE">
+                  <shadow type="type_null" id="*Z_*1IVSdZnZL8-th@44"></shadow>
+                  <block type="type_number" id="Kju{quX*}o(aQLD;o3U+"></block>
+                </value>
+                <next>
+                  <block type="input_dummy" id="A2p)[=A0eSt-)0U*jJC;">
+                    <field name="ALIGN">LEFT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="1r2DRbKv/4j5br5D[Py3">
+                        <field name="TEXT">degrees</field>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">servo_get_position</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">get</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">servo</field>
+                <field name="USER0">servo_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">servo_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">servo_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">servo_4</field>
+                <field name="CPU3">4</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="(k{*6{4.]G#fIjm_OSt~">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="=Q%sr$mV3`tL,|]v*wkg">
+                <field name="TEXT">position</field>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT">get the position of the servo motor.</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_set_power</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">spin</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all motors</field>
+                <field name="CPU4">all</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="(k{*6{4.]G#fIjm_OSt~">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="=Q%sr$mV3`tL,|]v*wkg">
+                <field name="TEXT">at</field>
+              </block>
+            </statement>
+            <next>
+              <block type="input_value" id="eNCIIj?`Dy*9Sg[1+Y?7">
+                <field name="INPUTNAME">power</field>
+                <field name="ALIGN">LEFT</field>
+                <value name="TYPE">
+                  <shadow type="type_null" id="xYmH)E!__8}|l{FbvAyY"></shadow>
+                  <block type="type_number" id="gZppUocmDU]jv1+uLXn@"></block>
+                </value>
+                <next>
+                  <block type="input_dummy" id="l#tMi8pHteuI,$6Ig#Df">
+                    <field name="ALIGN">LEFT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="m[UU17s3y!nnxTp/h*|b">
+                        <field name="TEXT">power (%)</field>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT">range is - 100 to 100 %. 0 is stop.</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_set_speed</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">spin</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all motors</field>
+                <field name="CPU4">all</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="(k{*6{4.]G#fIjm_OSt~">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="=Q%sr$mV3`tL,|]v*wkg">
+                <field name="TEXT">at</field>
+              </block>
+            </statement>
+            <next>
+              <block type="input_value" id="eNCIIj?`Dy*9Sg[1+Y?7">
+                <field name="INPUTNAME">speed</field>
+                <field name="ALIGN">LEFT</field>
+                <value name="TYPE">
+                  <shadow type="type_null" id="xYmH)E!__8}|l{FbvAyY"></shadow>
+                  <block type="type_number" id="gZppUocmDU]jv1+uLXn@"></block>
+                </value>
+                <next>
+                  <block type="input_dummy" id="l#tMi8pHteuI,$6Ig#Df">
+                    <field name="ALIGN">LEFT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="m[UU17s3y!nnxTp/h*|b">
+                        <field name="TEXT">(degrees per second)</field>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT">range is -720 to 720 dps.</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_set_target</field>
+    <field name="INLINE">EXT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">rotate</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all motors</field>
+                <field name="CPU4">all</field>
+                <next>
+                  <block type="field_static" id="E+vG2TKpSiKv=^mxwTnN">
+                    <field name="TEXT">to target</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_value" id="eNCIIj?`Dy*9Sg[1+Y?7">
+            <field name="INPUTNAME">speed</field>
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="qf#7XtypbKUa3]Kv]Gd{">
+                <field name="TEXT">speed: (dps)</field>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="xYmH)E!__8}|l{FbvAyY"></shadow>
+              <block type="type_number" id="gZppUocmDU]jv1+uLXn@"></block>
+            </value>
+            <next>
+              <block type="input_value" id="A02vys+bgj{Ly,E^=JuU">
+                <field name="INPUTNAME">position</field>
+                <field name="ALIGN">LEFT</field>
+                <statement name="FIELDS">
+                  <block type="field_static" id="z$Zxcdl2]^UEif!@zXcF">
+                    <field name="TEXT">target:</field>
+                    <next>
+                      <block type="field_dropdown" id="gm:qNJm:{=HaJ;^U1w[m">
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                        <field name="FIELDNAME">target</field>
+                        <field name="USER0">encoder count</field>
+                        <field name="CPU0">count</field>
+                        <field name="USER1">degrees</field>
+                        <field name="CPU1">degrees</field>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+                <value name="TYPE">
+                  <shadow type="type_null" id="%p;b?5,SW{vIhlc?ylPq"></shadow>
+                  <block type="type_number" id="V,d2LUgjAp^SGm{$AMNU"></block>
+                </value>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_set_degrees</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">rotate</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all motors</field>
+                <field name="CPU4">all</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="(k{*6{4.]G#fIjm_OSt~">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="=Q%sr$mV3`tL,|]v*wkg">
+                <field name="TEXT">at</field>
+              </block>
+            </statement>
+            <next>
+              <block type="input_value" id="eNCIIj?`Dy*9Sg[1+Y?7">
+                <field name="INPUTNAME">speed</field>
+                <field name="ALIGN">LEFT</field>
+                <value name="TYPE">
+                  <shadow type="type_null" id="xYmH)E!__8}|l{FbvAyY"></shadow>
+                  <block type="type_number" id="gZppUocmDU]jv1+uLXn@"></block>
+                </value>
+                <next>
+                  <block type="input_dummy" id="l#tMi8pHteuI,$6Ig#Df">
+                    <field name="ALIGN">LEFT</field>
+                    <statement name="FIELDS">
+                      <block type="field_static" id="m[UU17s3y!nnxTp/h*|b">
+                        <field name="TEXT">(degrees per second)</field>
+                        <next>
+                          <block type="field_static" id="cxa*(NhYu2C=Im@7|sP1">
+                            <field name="TEXT">to</field>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <next>
+                      <block type="input_value" id="A02vys+bgj{Ly,E^=JuU">
+                        <field name="INPUTNAME">encoder_count</field>
+                        <field name="ALIGN">LEFT</field>
+                        <value name="TYPE">
+                          <shadow type="type_null" id="%p;b?5,SW{vIhlc?ylPq"></shadow>
+                          <block type="type_number" id="V,d2LUgjAp^SGm{$AMNU"></block>
+                        </value>
+                        <next>
+                          <block type="input_dummy" id="Mg55)dIk]5xTK9A(:!J{">
+                            <field name="ALIGN">LEFT</field>
+                            <statement name="FIELDS">
+                              <block type="field_static" id=".n*L5oPFO[VIi[WV+hgC">
+                                <field name="TEXT">degrees</field>
+                              </block>
+                            </statement>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT">rate is 0-720 dps.</field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_get_busy</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">get</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <next>
+                  <block type="field_static" id="b#YQFZsYE]WQS+-;{Aba">
+                    <field name="TEXT">busy status</field>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT">returns a '1' if a DC motor is in progress to a target, '0' if at target.</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="M0V1TP6BP($XC]fTbEG0" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">motor_set_invert</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="wa?zIFhE)]gzr6fv8(ov">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="69mnkQ!H9[62p9^}+j2]">
+            <field name="TEXT">set</field>
+            <next>
+              <block type="field_dropdown" id="*KZ-%Fgi)BY[$3zh/*XI">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">motor_1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">motor_2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">motor_3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">motor_4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">all motors</field>
+                <field name="CPU4">all</field>
+                <next>
+                  <block type="field_static" id="b#YQFZsYE]WQS+-;{Aba">
+                    <field name="TEXT">invert to</field>
+                    <next>
+                      <block type="field_dropdown" id="+47XP{9f=3TI3T`8Dv$D">
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                        <field name="FIELDNAME">invert</field>
+                        <field name="USER0">true</field>
+                        <field name="CPU0">True</field>
+                        <field name="USER1">false</field>
+                        <field name="CPU1">False</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="~Z*+X#aXM$-#$EQ6Yti]" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="^JhS4IRv8N/w.`P%xOxd" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="3)/1tooMgb8|lIEcY{~d"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="uU%z]A%xQ/*W)A=DkKjf"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="lY[Iz=.$Q~AjI){dlDHY">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="8Pu[8%YN;8O8~k=]$o_a" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTTOM"></mutation>
+    <field name="NAME">program_begin</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTTOM</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="N:iaP1Ge7{IhI`9Kalx)">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="i/uBA2W|wl@.QDD@R5;3">
+            <field name="TEXT">program start</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Zsb@I;2#9.EEx4q6*Ysc" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="~]K4aT@4eFiFwbcd5i5:" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="ciqZS4H=I@YHbyW_2M|]"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="Bud:GREn;b/t`n,4F.FP">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="8Pu[8%YN;8O8~k=]$o_a" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTTOM"></mutation>
+    <field name="NAME">program_end</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">BOTTOM</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="N:iaP1Ge7{IhI`9Kalx)">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="i/uBA2W|wl@.QDD@R5;3">
+            <field name="TEXT">program end</field>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="Zsb@I;2#9.EEx4q6*Ysc" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="~]K4aT@4eFiFwbcd5i5:" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="ciqZS4H=I@YHbyW_2M|]"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="Bud:GREn;b/t`n,4F.FP">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block></xml>

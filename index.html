@@ -1,0 +1,975 @@
+<!--
+Middle School Computer Science Serial Web App - version 1.0 Beta
+Written by: Paul W Uttley | puttly@pitsco.com
+Data: 08/01/2023
+Company: PITSCO Education LLC
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" value="notranslate">
+  <title>PITSCO MSCS Robot:</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="./msl_blocks.js" defer></script>
+  <script src="./msl_generator.js" defer></script>
+  <script src="./blockly_helper.js" defer></script>
+  <!--script src="/storage.js"></script-->
+  <script src="./blockly_compressed.js"></script>
+  <script src="./blocks_compressed.js"></script>
+  <script src="./javascript_compressed.js"></script>
+  <script src="./python_compressed.js"></script>
+  <script src="./php_compressed.js"></script>
+  <script src="./lua_compressed.js"></script>
+  <script src="./dart_compressed.js"></script>
+  <script src="./code.js"></script>
+  <script src="term.js"></script>
+
+
+</head>
+
+<div style="height: 3vh; width: 100%; background-color: #263238;"></div>
+
+<!--script language="JavaScript" type="text/javascript">
+    var y1 = 20;   // change the # to adjust y coordinate of video content div
+    (document.getElementById) ? dom = true : dom = false;
+
+    function hideIt() {
+      if (dom) {document.getElementById("layer1").style.visibility='hidden';}
+    }
+
+    function showIt() {
+      if (dom) {document.getElementById("layer1").style.visibility='visible';}
+    }
+
+    function placeIt() {
+      if (dom && !document.all) {document.getElementById("layer1").style.top = window.pageYOffset + (window.innerHeight - (window.innerHeight-y1)) + "px";}
+      if (document.all) {document.all["layer1"].style.top = document.documentElement.scrollTop + (document.documentElement.clientHeight - (document.documentElement.clientHeight-y1)) + "px";}
+      window.setTimeout("placeIt()", 10); }
+</script-->
+
+
+  <body style="text-align: left;">
+
+  <table width="95%" height="90%">
+    <tr>
+      <td>
+        <h1><!--a href="https://www.pitsco.com"> PITSCO LUMA Robot</a-->
+          <span id="title">...</span>
+        </h1>
+      </td>
+      <td class="farSide">
+        <select id="languageMenu"></select>
+        <a class="privacyLink" href="https://policies.google.com/privacy">Privacy</a>
+      </td>
+    </tr>
+
+    <tr>
+
+    <td colspan=2>
+        <table width="100%">
+          <tr id="tabRow" height="2em" width="100%">
+            <td id="tab_blocks" class="tabon">...</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_javascript" class="taboff tab_collapse">JavaScript</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_python">Python</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_php" class="taboff tab_collapse">PHP</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_lua" class="taboff tab_collapse">Lua</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_dart" class="taboff tab_collapse">Dart</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_xml" class="taboff tab_collapse">XML</td>
+            <td class="tabmin tab_collapse">&nbsp;</td>
+            <td id="tab_json" class="taboff tab_collapse">JSON</td>
+            <td class="tabmin">&nbsp;</td>
+            <td id="tab_code" class="taboff">
+              <select id="code_menu"></select>
+            </td>
+            <td class="tabmax"></td>
+         </tr>
+        </table>
+      </td>
+    </tr>
+
+    <tr>
+      <td height="100%" width="100%" colspan=2 id="content_area">
+      </td>
+    </tr>
+  </table>
+  <div id="content_blocks" class="content"></div>
+  <pre id="content_javascript" class="content prettyprint lang-js"></pre>
+  <pre id="content_python" class="content prettyprint lang-py"></pre>
+  <pre id="content_php" class="content prettyprint lang-php"></pre>
+  <pre id="content_lua" class="content prettyprint lang-lua"></pre>
+  <pre id="content_dart" class="content prettyprint lang-dart"></pre>
+  <textarea id="content_xml" class="content" wrap="off"></textarea>
+  <textarea id="content_json" class="content" wrap="off"></textarea>
+
+  <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
+    <category name="Movement" colour= "#7B1FA2">
+      <block type="move_speed">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="move_distance">
+        <value name="distance">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="move_start"></block>
+      <block type="move_stop"></block>
+      <block type="move_spin">
+        <value name="degrees">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="move_pivot">
+        <value name="degrees">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="move_steering">
+        <value name="left speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="right speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <category name="Motors" colour= "#ff7cb0">
+      <block type="motor_set_power">
+        <value name="power">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="motor_set_speed">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">360</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="motor_set_target">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">360</field>
+          </shadow>
+        </value>
+        <value name="position">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="servo_speed">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="servo_position">
+        <value name="position">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+
+    <category name="Sensors" colour= "#ec5b13">
+      <block type="sensor_ultrasonic"></block>
+      <block type="sensor_line"></block>
+    </category>
+
+    <category name="Control" colour= "#eea011">
+      <block type="program_begin"></block>
+      <block type="program_end"></block>
+      <block type="delay"></block>
+      <block type="button_start"></block>
+    </category>
+
+    <!--category name="Servos" colour= "#db2457">
+      <block type="move_servo">
+        <value name="position">
+          <shadow type="math_number">
+            <field name="NUM">90</field>
+          </shadow>
+        </value>
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+    </category-->
+
+    <category name="Pixels" colour= "#741e1c">
+      <block type="pixel_color">
+        <!--value name="color">
+          <shadow type="colour_picker"/>
+        </value-->
+        <value name="color">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="brightness">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pixel_blink">
+        <!--value name="color">
+          <shadow type="colour_picker"/>
+        </value-->
+        <value name="color">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="times">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pixel_animate"></block>
+      <block type="pixels_off"></block>
+      <block type="color_picker"></block>
+      <block type="color_random"></block>
+    </category>
+
+    <category name="Sound" colour= "#1b84e4">
+      <block type="sound_effect"></block>
+      <block type="sound_tone">
+        <value name="tone">
+          <shadow type="math_number">
+            <field name="NUM">1000</field>
+          </shadow>
+        </value>
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sound_note">
+        <value name="time">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="sound_stop"></block>
+    </category>
+
+    <sep></sep>
+
+    <category name="%{BKY_CATLOGIC}" colour="%{BKY_LOGIC_HUE}">
+      <block type="controls_if"></block>
+      <block type="logic_compare"></block>
+      <block type="logic_operation"></block>
+      <block type="logic_negate"></block>
+      <block type="logic_boolean"></block>
+      <block type="logic_null"></block>
+      <block type="logic_ternary"></block>
+    </category>
+    <category name="%{BKY_CATLOOPS}" colour="%{BKY_LOOPS_HUE}">
+      <block type="controls_loop_forever"></block>
+      <block type="controls_repeat_ext">
+        <value name="TIMES">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_whileUntil"></block>
+      <block type="controls_for">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+        <value name="BY">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="controls_forEach"></block>
+      <block type="controls_flow_statements"></block>
+    </category>
+    <category name="%{BKY_CATMATH}" colour="%{BKY_MATH_HUE}">
+      <block type="math_number">
+        <field name="NUM">123</field>
+      </block>
+      <block type="math_arithmetic">
+        <value name="A">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="B">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_single">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">9</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_trig">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">45</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constant"></block>
+      <block type="math_number_property">
+        <value name="NUMBER_TO_CHECK">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_round">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">3.1</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_on_list"></block>
+      <block type="math_modulo">
+        <value name="DIVIDEND">
+          <shadow type="math_number">
+            <field name="NUM">64</field>
+          </shadow>
+        </value>
+        <value name="DIVISOR">
+          <shadow type="math_number">
+            <field name="NUM">10</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_constrain">
+        <value name="VALUE">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="LOW">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="HIGH">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_int">
+        <value name="FROM">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="TO">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="math_random_float"></block>
+      <block type="math_atan2">
+        <value name="X">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+        <value name="Y">
+          <shadow type="math_number">
+            <field name="NUM">1</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATTEXT}" colour="%{BKY_TEXTS_HUE}">
+      <block type="text"></block>
+      <block type="text_join"></block>
+      <block type="text_append">
+        <value name="TEXT">
+          <shadow type="text"></shadow>
+        </value>
+      </block>
+      <block type="text_length">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_isEmpty">
+        <value name="VALUE">
+          <shadow type="text">
+            <field name="TEXT"></field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+        <value name="FIND">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_charAt">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_getSubstring">
+        <value name="STRING">
+          <block type="variables_get">
+            <field name="VAR">{textVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="text_changeCase">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_trim">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_print">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="text_prompt_ext">
+        <value name="TEXT">
+          <shadow type="text">
+            <field name="TEXT">abc</field>
+          </shadow>
+        </value>
+      </block>
+    </category>
+    <category name="%{BKY_CATLISTS}" colour="%{BKY_LISTS_HUE}">
+      <block type="lists_create_with">
+        <mutation items="0"></mutation>
+      </block>
+      <block type="lists_create_with"></block>
+      <block type="lists_repeat">
+        <value name="NUM">
+          <shadow type="math_number">
+            <field name="NUM">5</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_length"></block>
+      <block type="lists_isEmpty"></block>
+      <block type="lists_indexOf">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getIndex">
+        <value name="VALUE">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_setIndex">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_getSublist">
+        <value name="LIST">
+          <block type="variables_get">
+            <field name="VAR">{listVariable}</field>
+          </block>
+        </value>
+      </block>
+      <block type="lists_split">
+        <value name="DELIM">
+          <shadow type="text">
+            <field name="TEXT">,</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="lists_sort"></block>
+    </category>
+    <!--category name="%{BKY_CATCOLOUR}" colour="%{BKY_COLOUR_HUE}">
+      <block type="colour_picker"></block>
+      <block type="colour_random"></block>
+      <block type="colour_rgb">
+        <value name="RED">
+          <shadow type="math_number">
+            <field name="NUM">100</field>
+          </shadow>
+        </value>
+        <value name="GREEN">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="BLUE">
+          <shadow type="math_number">
+            <field name="NUM">0</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="colour_blend">
+        <value name="COLOUR1">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#ff0000</field>
+          </shadow>
+        </value>
+        <value name="COLOUR2">
+          <shadow type="colour_picker">
+            <field name="COLOUR">#3333ff</field>
+          </shadow>
+        </value>
+        <value name="RATIO">
+          <shadow type="math_number">
+            <field name="NUM">0.5</field>
+          </shadow>
+        </value>
+      </block>
+    </category-->
+    <sep></sep>
+    <category name="%{BKY_CATVARIABLES}" colour="%{BKY_VARIABLES_HUE}" custom="VARIABLE"></category>
+    <category name="%{BKY_CATFUNCTIONS}" colour="%{BKY_PROCEDURES_HUE}" custom="PROCEDURE"></category>
+  </xml>
+
+<script>
+
+      function savePyCode() {
+            var code = Blockly.Python.workspaceToCode(Code.workspace);
+            savePythonCodeToFile(code, "code.py");
+          }
+
+      function savePythonCodeToFile(data, fileName) {
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+            var json = JSON.stringify(data),
+                blob = new Blob([data], {type: "text/plain;charset=utf-8"}),
+                url = window.URL.createObjectURL(blob);
+            a.href = url;
+            a.download = fileName;
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }
+
+      function savePythonCodeToFile_2(data, fileName) {
+              var json = JSON.stringify(data),
+                   bl = new Blob([data], {type: "text/plain;charset=utf-8"});
+              var a = document.createElement("a");
+              a.href = URL.createObjectURL(bl);
+              a.download = "code.py";
+              a.hidden = true;
+              document.body.appendChild(a);
+              a.click();
+            }
+
+    function saveBlocklyCodeToFile() {
+            var a = document.createElement("a");
+            document.body.appendChild(a);
+            a.style = "display: none";
+
+            var xml = Blockly.Xml.workspaceToDom(Code.workspace);
+            var xml_text = Blockly.Xml.domToPrettyText(xml);
+
+            var json = JSON.stringify(xml_text),
+                blob = new Blob([xml_text], {type: "text/plain;charset=utf-8"}),
+                url = window.URL.createObjectURL(blob);
+            a.href = url;
+            a.download = "code.blockly";
+            a.click();
+            window.URL.revokeObjectURL(url);
+          }
+
+    function readFiles(){
+        var files = event.target.files;
+        // Only allow uploading one file.
+        if (files.length != 1) {
+          return;
+      }
+      // FileReader
+      var reader = new FileReader();
+      reader.onloadend = function(event) {
+        var target = event.target;
+        // 2 == FileReader.DONE
+        if (target.readyState == 2) {
+          try {
+            var xml = Blockly.Xml.textToDom(target.result);
+          } catch (e) {
+            alert('Error parsing XML:\n' + e);
+            return;
+          }
+          var count = Blockly.mainWorkspace.getAllBlocks().length;
+          if (count && confirm('Replace existing blocks?\n"Cancel" will merge.')) {
+            Blockly.mainWorkspace.clear();
+          }
+          Blockly.Xml.domToWorkspace(Blockly.mainWorkspace, xml);
+          }
+        // Reset value of input after loading because Chrome will not fire
+        // a 'change' event if the same file is loaded again.
+        document.getElementById('file-input').value = '';
+      };
+      reader.readAsText(files[0]);
+    }
+
+    function ZoomCenter(){
+      Blockly.mainWorkspace.zoomToFit();
+      Blockly.mainWorkspace.setScale(1);
+      Blockly.mainWorkspace.scrollCenter(workspace);	// set scroll bars to center
+    }
+
+</script>
+
+<div style="height: 1vh; width: 100%; margin-bottom: 1px; background-color: #263238;"></div>
+<button id = openBlocks class ="openButton" onclick="document.getElementById('file-input').click();">Open Blocks</button>
+<input accept=".blockly" id="file-input" type="file" name="name" onchange="readFiles(this.files)" style="display: none;" />
+
+<button id="saveBlocks" onclick="saveBlocklyCodeToFile()">Save Blocks</button>
+<button id="trashButton">Delete Blocks</button>
+<button id=saveCode onclick="savePyCode()">Save Python Code</button>
+
+<select name="speed" id="SerialSpeed">
+  <option value="1200">1200</option>
+  <option value="2400">2400</option>
+  <option value="4800">4800</option>
+  <option value="9600">9600</option>
+  <option value="19200">19200</option>
+  <option value="38400">38400</option>
+  <option value="57600">57600</option>
+  <option value="115200">115200</option>
+</select>
+
+<button id="interrupt" type="button" onclick=enterMicroPythonPasteMode()>interrupt</button>
+<button id="CTLA" type="button" onclick=CTLA()>CTL-A</button>
+<button id="CTLB" type="button" onclick=CTLB()>CTL-B</button>
+<button id="CTLC" type="button" onclick=CTLC()>CTL-C</button>
+<button id="CTLD" type="button" onclick=CTLD()>CTL-D</button>
+<button id="CTLE" type="button" onclick=CTLE()>CTL-E</button>
+<button id="pasteCP" type="button" onclick=pastecode()>paste code</button>
+<button id="saveCP" type="button" onclick=saveCPcode()>save code</button>
+<button id="uploadCP" type="button" onclick=uploadCPcode()>Upload Code</button>
+<button id="SerialConnectButton" type="button">Connect MSL</button>
+<button id="reboot" type="button" onclick=rebootCP()>Reset MSL</button>
+<button id="REPL" onclick="myTerminal()">Toggle REPL Terminal</button>
+
+<div style="height: 3vh; width: 100%; background-color: #263238;"></div>
+<div id="term" style="display: none;"></div>
+
+<script>
+
+  function myTerminal() {
+    var x = document.getElementById("term");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+      document.getElementById('REPL').style.color = '#fff164'; // lime YELLOW
+    } else {
+      x.style.display = "none";
+      document.getElementById('REPL').style.color = '#fff'; // white
+    }
+
+}
+
+
+function enterMicroPythonPasteMode() {
+  serialWrite('\r\x03\x03'); // ctl c
+  pastemode();
+}
+
+function uploadCPcode(){
+  var checkcode = Blockly.Python.workspaceToCode(Code.workspace);
+  if (port){
+      if (checkcode) {
+        window.alert("Press OK to upload code.")
+      //  serialWrite('\r\x03\x03'); // ctl c >> interrupt any code that is running
+      //  serialWrite('\r\x03\x03');
+          serialWrite('\x03');
+          serialWrite('\r');
+        serialWrite('\x05');       // ctl e >> enter raw paste mode
+        // get code from workspace and send it over serial stream
+        var code = "code=r'''" + 'import MSL_CS as msl' + '\n' + Blockly.Python.workspaceToCode(Code.workspace) + 'while True:' + '\n' + '\t' + 'pass' + "'''";
+        console.log(code); // print the code to the console
+        var ccommand = code.replace(/\n/g, "\r");               /// i added
+        serialWrite(ccommand);
+          serialWrite('\r');
+          serialWrite('\r');
+          serialWrite('\r');
+          serialWrite('\r');
+          serialWrite('\r');
+        serialWrite('\x04');   // soft rebbot
+          serialWrite('\r');
+        var command = "with open('code.py','w') as f: f.write(code)"
+        var ccommand = command.replace(/\n/g, "\r");               /// i added
+        serialWrite(ccommand);    // send save code to filesystem
+        serialWrite('\r');        // two returns
+        serialWrite('\r');
+        serialWrite('\x04');      // soft reboot
+      }else{
+        window.alert("No code in the workspace to upload.");
+      }
+   }else{
+     window.alert("Robot is not connected.");
+   }
+}
+
+function rebootCP(){
+  CTLC();
+  CTLD();
+}
+
+function saveCPcode(){
+  CTLD();
+  var command = "with open('code.py','w') as f: f.write(code)"
+  var ccommand = command.replace(/\n/g, "\r");               /// i added
+  serialWrite(ccommand);
+  serialWrite('\r');
+  serialWrite('\r');
+  serialWrite('\x04');  //reboot LUMA
+
+}
+
+function pastecode(){
+  var code = '\r' + "code=r'''" + Blockly.Python.workspaceToCode(Code.workspace) + "'''";
+  var ccommand = code.replace(/\n/g, "\r");               /// i added
+  serialWrite(ccommand);
+//  console.log(ccommand);
+}
+
+function pastemode(){
+  serialWrite('\x05');      // ctl e
+}
+
+function CTLA(){
+  serialWrite('\x01');      // ctl a
+}
+
+function CTLB(){
+  serialWrite('\x02');      // ctl b
+}
+
+function CTLC(){
+  serialWrite('\r\x03\x03');  // ctl c twice
+}
+
+function CTLD(){
+  serialWrite('\x04');      // ctl d
+}
+
+function CTLE(){
+  serialWrite('\x05');      // ctl e
+}
+
+
+var term;
+
+function calculate_size(win) {
+    var cols = Math.max(80, Math.min(150, (win.innerWidth - 280) / 7)) | 0;
+    var rows = Math.max(24, Math.min(80, (win.innerHeight - 180) / 12)) | 0;
+    return [cols, rows];
+}
+
+(function() {
+    window.onload = function() {
+
+      var size = calculate_size(self);
+      term = new Terminal({
+        cols: size[0],
+        rows: size[1],
+        useStyle: true,
+        screenKeys: true,
+        cursorBlink: false
+      });
+      term.open(document.getElementById("term"));
+    };
+    window.addEventListener('resize', function() {
+        var size = calculate_size(self);
+        term.resize(size[0], size[1]);
+
+    });
+}).call(this);
+
+
+/*
+ * Web Serial API (Google Chrome)
+ *
+ * Useful information used to this implementation:
+ * https://github.com/svendahlstrand/web-serial-api/
+ * https://dev.to/unjavascripter/the-amazing-powers-of-the-web-web-serial-api-3ilc
+ * https://developer.chrome.com/en/articles/serial/
+ * https://developer.mozilla.org/en-US/docs/Web/API/SerialPort
+ */
+
+
+const connectButton = document.getElementById ('SerialConnectButton');
+let port;
+
+// Filter on devices with specific Vendor/Product IDs.
+const filters = [
+  { usbVendorId: 0x21FA, usbProductId: 0x8132 },        // LUMA Robot Controller ID's
+  { usbVendorId: 0x239A, usbProductId: 0x80F4 },
+  { usbVendorId: 0x303A, usbProductId: 0x7003 }         // 303A | 7003 is BETA MSCS
+];                                                      // 21FA is Pitsco's USB-IF issued vendor ID
+                                                        // lUMA uses 0x21FA and 0x8132
+                                                        // BETA units used 239A and 0x80F4
+                                                        // ESP32-S3 uses 239A and 0x8114
+if ('serial' in navigator) {
+  console.log("The Web Serial API is supported");
+  connectButton.addEventListener('click', function () {
+    if (port) {
+      term.write('\x1b[31mDisconnected, or already connected to Serial Port\x1b[m\r\n');
+      console.log("Disconnected, or already connected to Serial Port");
+    //  port.close();
+    //  port = undefined;
+    //  connectButton.innerText = 'Connect';
+      document.getElementById('SerialSpeed').disabled = false;
+
+    }
+    else {
+    //  connectButton.innerText = 'Disconnect';
+      getReader();
+    }
+  });
+
+  connectButton.disabled = false;
+}
+else {
+  const error = document.createElement('p');
+  error.innerHTML = '<p>Support for Serial Web API not enabled. Please enable it using chrome://flags/ and enable Experimental Web Platform fetures</p>';
+  console.log("The Web Serial API is not supported, or not enabled");
+}
+
+
+let lineBuffer = '';
+let latestValue = 0;
+
+async function serialWrite(data) {
+	encoder = new TextEncoder();
+	const dataArrayBuffer = encoder.encode(data);
+
+	if (port && port.writable) {
+		const writer = port.writable.getWriter();
+		writer.write(dataArrayBuffer);
+		writer.releaseLock();
+	}
+}
+
+async function getReader() {
+  port = await navigator.serial.requestPort({ filters });
+
+  port.addEventListener('disconnect', (event) => {
+    // notify that the port (specificaly LUMA) has become unavailable
+    console.log("Device is Disconnected");
+    document.getElementById('SerialConnectButton').innerText = "Connect LUMA";
+    document.getElementById('SerialConnectButton').style.color = '#FF3393'; // magenta
+    document.getElementById('uploadCP').style.color = '#817F86'; // gray
+    document.getElementById('reboot').style.color = '#817F86';   // gray
+    port.close();
+    port = undefined;
+  });
+
+  var e = document.getElementById("SerialSpeed");
+	var strSpd = e.options[e.selectedIndex].value;
+	//var speed = parseInt(strSpd);
+  var speed = 115200;   // set baud to 115200 as the default
+  rebootCP();
+	await port.open({ baudRate: [speed] });
+  console.log("Device is most definitely connected");
+  document.getElementById('SerialConnectButton').innerText = "Connected";
+  document.getElementById('SerialConnectButton').style.color = '#ACFF33'; // lime green
+  document.getElementById('uploadCP').style.color = '#fff'; // white
+  document.getElementById('reboot').style.color = '#fff';   // white
+  rebootCP();
+	document.getElementById('SerialSpeed').disabled = true;
+
+    //    connectButton.innerText = 'Disconnect';
+        term.write('\x1b[31mConnected using Web Serial API !\x1b[m\r\n');
+        console.log("Connected to Serial Port");
+        const appendStream = new WritableStream({
+        write(chunk) {
+	      term.write(chunk);
+          }
+        });
+
+        port.readable
+          .pipeThrough(new TextDecoderStream())
+          .pipeTo(appendStream);
+
+
+	term.on('data', function(data) {
+            serialWrite(data);
+
+        });
+
+      }
+</script>
+
+</body>
+
+</html>
