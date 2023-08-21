@@ -89,7 +89,7 @@ Blockly.Blocks['motor_set_speed'] = {
 Blockly.Blocks['motor_set_powers'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("motor(s) set power to");
+        .appendField("motor | set powers to");
     this.appendValueInput("power_1")
         .setCheck("Number")
         .appendField("1");
@@ -116,17 +116,17 @@ Blockly.Blocks['motor_set_powers'] = {
 Blockly.Blocks['motor_set_speeds'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("motor(s) set speed to");
-    this.appendValueInput("speed 1")
+        .appendField("motor | set speeds to");
+    this.appendValueInput("speed_1")
         .setCheck("Number")
         .appendField("1");
-    this.appendValueInput("speed 2")
+    this.appendValueInput("speed_2")
         .setCheck("Number")
         .appendField("2");
-    this.appendValueInput("speed 3")
+    this.appendValueInput("speed_3")
         .setCheck("Number")
         .appendField("3");
-    this.appendValueInput("speed 4")
+    this.appendValueInput("speed_4")
         .setCheck("Number")
         .appendField("4");
     this.appendDummyInput()
@@ -250,16 +250,16 @@ Blockly.Blocks['servo_set_speeds'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("servo | set speeds to");
-    this.appendValueInput("speed 1")
+    this.appendValueInput("speed_1")
         .setCheck("Number")
         .appendField("1");
-    this.appendValueInput("speed 2")
+    this.appendValueInput("speed_2")
         .setCheck("Number")
         .appendField("2");
-    this.appendValueInput("speed 3")
+    this.appendValueInput("speed_3")
         .setCheck("Number")
         .appendField("3");
-    this.appendValueInput("speed 4")
+    this.appendValueInput("speed_4")
         .setCheck("Number")
         .appendField("4");
     this.appendDummyInput()
@@ -297,16 +297,16 @@ Blockly.Blocks['servo_set_positions'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("servo | set positions to");
-    this.appendValueInput("position 1")
+    this.appendValueInput("position_1")
         .setCheck("Number")
         .appendField("1");
-    this.appendValueInput("position 2")
+    this.appendValueInput("position_2")
         .setCheck("Number")
         .appendField("2");
-    this.appendValueInput("position 3")
+    this.appendValueInput("position_3")
         .setCheck("Number")
         .appendField("3");
-    this.appendValueInput("position 4")
+    this.appendValueInput("position_4")
         .setCheck("Number")
         .appendField("4");
     this.appendDummyInput()

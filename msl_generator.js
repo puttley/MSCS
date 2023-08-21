@@ -55,10 +55,10 @@ Blockly.Python['motor_set_powers'] = function(block) {
 
 
 Blockly.Python['motor_set_speeds'] = function(block) {
-  var value_speed_1 = Blockly.Python.valueToCode(block, 'speed 1', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_2 = Blockly.Python.valueToCode(block, 'speed 2', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_3 = Blockly.Python.valueToCode(block, 'speed 3', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_4 = Blockly.Python.valueToCode(block, 'speed 4', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_1 = Blockly.Python.valueToCode(block, 'speed_1', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_2 = Blockly.Python.valueToCode(block, 'speed_2', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_3 = Blockly.Python.valueToCode(block, 'speed_3', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_4 = Blockly.Python.valueToCode(block, 'speed_4', Blockly.Python.ORDER_ATOMIC);
   var code = 'msl.setMotorSpeeds(' + value_speed_1 + ',' + value_speed_2 + ',' + value_speed_3 + ',' + value_speed_4 + ')' + '\n';
   return code;
 };
@@ -135,10 +135,10 @@ Blockly.Python['servo_set_position'] = function(block) {
 
 
 Blockly.Python['servo_set_positions'] = function(block) {
-  var value_position_1 = Blockly.Python.valueToCode(block, 'position 1', Blockly.Python.ORDER_ATOMIC);
-  var value_position_2 = Blockly.Python.valueToCode(block, 'position 2', Blockly.Python.ORDER_ATOMIC);
-  var value_position_3 = Blockly.Python.valueToCode(block, 'position 3', Blockly.Python.ORDER_ATOMIC);
-  var value_position_4 = Blockly.Python.valueToCode(block, 'position 4', Blockly.Python.ORDER_ATOMIC);
+  var value_position_1 = Blockly.Python.valueToCode(block, 'position_1', Blockly.Python.ORDER_ATOMIC);
+  var value_position_2 = Blockly.Python.valueToCode(block, 'position_2', Blockly.Python.ORDER_ATOMIC);
+  var value_position_3 = Blockly.Python.valueToCode(block, 'position_3', Blockly.Python.ORDER_ATOMIC);
+  var value_position_4 = Blockly.Python.valueToCode(block, 'position_4', Blockly.Python.ORDER_ATOMIC);
   var code = 'msl.setServoPositions(' + value_position_1 + ',' + value_position_2 + ',' + value_position_3 + ',' + value_position_4 + ')' + '\n';
   return code;
 };
