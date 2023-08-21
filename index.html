@@ -241,6 +241,8 @@ Company: PITSCO Education LLC
         </value>
       </block>
       <block type="motor_stop"></block>
+      <block type="set_motor_invert"></block>
+      <block type="motor_busy"></block>
     </category>
 
     <category name="Servos" colour= "#C75052">
@@ -302,6 +304,8 @@ Company: PITSCO Education LLC
           </shadow>
         </value>
       </block>
+      <block type="set_servo_invert"></block>
+      <block type="get_servo_position"></block>
     </category>
 
     <category name="Sensors" colour= "#ec5b13">
@@ -313,7 +317,6 @@ Company: PITSCO Education LLC
       <block type="program_begin"></block>
       <block type="program_end"></block>
       <block type="delay"></block>
-      <block type="motor_busy"></block>
       <block type="buttons_status"></block>
     </category>
 
@@ -1031,7 +1034,7 @@ async function getReader() {
   port.addEventListener('disconnect', (event) => {
     // notify that the port (specificaly LUMA) has become unavailable
     console.log("Device is Disconnected");
-    document.getElementById('SerialConnectButton').innerText = "Connect LUMA";
+    document.getElementById('SerialConnectButton').innerText = "Connect MSL";
     document.getElementById('SerialConnectButton').style.color = '#FF3393'; // magenta
     document.getElementById('uploadCP').style.color = '#817F86'; // gray
     document.getElementById('reboot').style.color = '#817F86';   // gray

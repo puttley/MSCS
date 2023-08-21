@@ -154,9 +154,6 @@ Blockly.Blocks['motor_rotate_degrees'] = {
         .setCheck("Number");
     this.appendDummyInput()
         .appendField("% speed");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
-        .appendField("wait");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -181,9 +178,6 @@ Blockly.Blocks['motor_rotate_target'] = {
         .setCheck("Number");
     this.appendDummyInput()
         .appendField("% speed");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
-        .appendField("wait");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -218,9 +212,25 @@ Blockly.Blocks['motor_busy'] = {
     this.appendDummyInput()
         .appendField("busy ?");
     this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['set_motor_invert'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "motor");
+    this.appendDummyInput()
+        .appendField("invert direction")
+        .appendField(new Blockly.FieldDropdown([["True","True"], ["False","False"]]), "invert");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#eea011");
+    this.setColour('#587081');
  this.setTooltip("");
  this.setHelpUrl("");
   }
@@ -311,6 +321,36 @@ Blockly.Blocks['servo_set_positions'] = {
         .appendField("4");
     this.appendDummyInput()
         .appendField("degrees");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#C75052");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['get_servo_position'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("get servo")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "servo")
+        .appendField("position");
+    this.setOutput(true, null);
+    this.setColour("#C75052");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['set_servo_invert'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("servo")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "servo");
+    this.appendDummyInput()
+        .appendField("invert direction")
+        .appendField(new Blockly.FieldDropdown([["True","True"], ["False","False"]]), "invert");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
