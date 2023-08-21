@@ -45,10 +45,10 @@ Blockly.Python['motor_set_speed'] = function(block) {
 
 
 Blockly.Python['motor_set_powers'] = function(block) {
-  var value_power_1 = Blockly.Python.valueToCode(block, 'power 1', Blockly.Python.ORDER_ATOMIC);
-  var value_power_2 = Blockly.Python.valueToCode(block, 'power 2', Blockly.Python.ORDER_ATOMIC);
-  var value_power_3 = Blockly.Python.valueToCode(block, 'power 3', Blockly.Python.ORDER_ATOMIC);
-  var value_power_4 = Blockly.Python.valueToCode(block, 'power 4', Blockly.Python.ORDER_ATOMIC);
+  var value_power_1 = Blockly.Python.valueToCode(block, 'power_1', Blockly.Python.ORDER_ATOMIC);
+  var value_power_2 = Blockly.Python.valueToCode(block, 'power_2', Blockly.Python.ORDER_ATOMIC);
+  var value_power_3 = Blockly.Python.valueToCode(block, 'power_3', Blockly.Python.ORDER_ATOMIC);
+  var value_power_4 = Blockly.Python.valueToCode(block, 'power_4', Blockly.Python.ORDER_ATOMIC);
   var code = 'msl.setMotorPowers(' + value_power_1 + ',' + value_power_2 + ',' + value_power_3 + ',' + value_power_4 + ')' + '\n';
   return code;
 };

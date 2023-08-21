@@ -90,16 +90,16 @@ Blockly.Blocks['motor_set_powers'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("motor(s) set power to");
-    this.appendValueInput("power 1")
+    this.appendValueInput("power_1")
         .setCheck("Number")
         .appendField("1");
-    this.appendValueInput("power 2")
+    this.appendValueInput("power_2")
         .setCheck("Number")
         .appendField("2");
-    this.appendValueInput("power 3")
+    this.appendValueInput("power_3")
         .setCheck("Number")
         .appendField("3");
-    this.appendValueInput("power 4")
+    this.appendValueInput("power_4")
         .setCheck("Number")
         .appendField("4");
     this.appendDummyInput()
