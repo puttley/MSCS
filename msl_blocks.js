@@ -33,75 +33,45 @@ Blockly.Blocks['button_start'] = {
   }
 };
 
-
-Blockly.Blocks['motor_set_power'] = {
+Blockly.Blocks['buttons_status'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("spin")
-        .appendField(new Blockly.FieldDropdown([["motor_1","1"], ["motor_2","2"], ["motor_3","3"], ["motor_4","4"], ["all motors","all"]]), "motor");
-    this.appendDummyInput()
-        .appendField("at");
-    this.appendValueInput("power")
-        .setCheck("Number");
-    this.appendDummyInput()
-        .appendField("power (%)");
+        .appendField(new Blockly.FieldDropdown([["start","start"], ["up","up"], ["down","down"], ["right","right"], ["left","left"]]), "button")
+        .appendField("button is pressed");
     this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#ff7cb0");
- this.setTooltip("");
- this.setHelpUrl("range is - 100 to 100 %. 0 is stop.");
-  }
-};
-
-Blockly.Blocks['motor_set_speed'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("spin")
-        .appendField(new Blockly.FieldDropdown([["motor_1","1"], ["motor_2","2"], ["motor_3","3"], ["motor_4","4"], ["all motors","all"]]), "motor");
-    this.appendDummyInput()
-        .appendField("at");
-    this.appendValueInput("speed")
-        .setCheck("Number");
-    this.appendDummyInput()
-        .appendField("(degrees per second)");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#ff7cb0");
- this.setTooltip("");
- this.setHelpUrl("range is -720 to 720 dps.");
-  }
-};
-
-Blockly.Blocks['motor_set_target'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("rotate")
-        .appendField(new Blockly.FieldDropdown([["motor_1","1"], ["motor_2","2"], ["motor_3","3"], ["motor_4","4"], ["all motors","all"]]), "motor")
-        .appendField("to target");
-    this.appendValueInput("speed")
-        .setCheck("Number")
-        .appendField("speed: (dps)");
-    this.appendValueInput("position")
-        .setCheck("Number")
-        .appendField("target:")
-        .appendField(new Blockly.FieldDropdown([["encoder count","count"], ["degrees","degrees"]]), "target");
-    this.setInputsInline(false);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#ff7cb0");
+    this.setOutput(true, null);
+    this.setColour('#eea011');
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
-Blockly.Blocks['servo_speed'] = {
+Blockly.Blocks['motor_set_power'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("set")
-        .appendField(new Blockly.FieldDropdown([["servo_1","1"], ["servo_2","2"], ["servo_3","3"], ["servo_4","4"], ["all servos","all"]]), "servo")
-        .appendField("speed to");
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
+        .appendField("set power to");
+    this.appendValueInput("power")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['motor_set_speed'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
+        .appendField("set speed to");
     this.appendValueInput("speed")
         .setCheck("Number");
     this.appendDummyInput()
@@ -109,19 +79,207 @@ Blockly.Blocks['servo_speed'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#ff7cb0");
- this.setTooltip("set the servo speed. Range is 0 - 100.");
+    this.setColour('#587081');
+ this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
-Blockly.Blocks['servo_position'] = {
+
+Blockly.Blocks['motor_set_powers'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("move")
-        .appendField(new Blockly.FieldDropdown([["servo_1","1"], ["servo_2","2"], ["servo_3","3"], ["servo_4","4"], ["all servos","all"]]), "servo");
+        .appendField("motor(s) set power to");
+    this.appendValueInput("power 1")
+        .setCheck("Number")
+        .appendField("1");
+    this.appendValueInput("power 2")
+        .setCheck("Number")
+        .appendField("2");
+    this.appendValueInput("power 3")
+        .setCheck("Number")
+        .appendField("3");
+    this.appendValueInput("power 4")
+        .setCheck("Number")
+        .appendField("4");
     this.appendDummyInput()
-        .appendField("position to");
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['motor_set_speeds'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor(s) set speed to");
+    this.appendValueInput("speed 1")
+        .setCheck("Number")
+        .appendField("1");
+    this.appendValueInput("speed 2")
+        .setCheck("Number")
+        .appendField("2");
+    this.appendValueInput("speed 3")
+        .setCheck("Number")
+        .appendField("3");
+    this.appendValueInput("speed 4")
+        .setCheck("Number")
+        .appendField("4");
+    this.appendDummyInput()
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['motor_rotate_degrees'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
+        .appendField("rotate");
+    this.appendValueInput("degrees")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("degrees at");
+    this.appendValueInput("speed")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("% speed");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
+        .appendField("wait");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['motor_rotate_target'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
+        .appendField("rotate to encoder count");
+    this.appendValueInput("count")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("at");
+    this.appendValueInput("speed")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("% speed");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
+        .appendField("wait");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['motor_stop'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor");
+    this.appendDummyInput()
+        .appendField("stop with")
+        .appendField(new Blockly.FieldDropdown([["no brake","no brake"], ["brake","brake"]]), "brake");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#587081');
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['motor_busy'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("motor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "motor");
+    this.appendDummyInput()
+        .appendField("busy ?");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#eea011");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['servo_set_speed'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("servo")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "servo")
+        .appendField("set speed to");
+    this.appendValueInput("speed")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#C75052");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['servo_set_speeds'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("servo | set speeds to");
+    this.appendValueInput("speed 1")
+        .setCheck("Number")
+        .appendField("1");
+    this.appendValueInput("speed 2")
+        .setCheck("Number")
+        .appendField("2");
+    this.appendValueInput("speed 3")
+        .setCheck("Number")
+        .appendField("3");
+    this.appendValueInput("speed 4")
+        .setCheck("Number")
+        .appendField("4");
+    this.appendDummyInput()
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#C75052");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+Blockly.Blocks['servo_set_position'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("servo")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "servo")
+        .appendField("set position to");
     this.appendValueInput("position")
         .setCheck("Number");
     this.appendDummyInput()
@@ -129,12 +287,38 @@ Blockly.Blocks['servo_position'] = {
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#ff7cb0");
+    this.setColour("#C75052");
  this.setTooltip("");
  this.setHelpUrl("");
   }
 };
 
+Blockly.Blocks['servo_set_positions'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("servo | set positions to");
+    this.appendValueInput("position 1")
+        .setCheck("Number")
+        .appendField("1");
+    this.appendValueInput("position 2")
+        .setCheck("Number")
+        .appendField("2");
+    this.appendValueInput("position 3")
+        .setCheck("Number")
+        .appendField("3");
+    this.appendValueInput("position 4")
+        .setCheck("Number")
+        .appendField("4");
+    this.appendDummyInput()
+        .appendField("degrees");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#C75052");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
 
 
 
