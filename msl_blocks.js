@@ -140,20 +140,21 @@ Blockly.Blocks['motor_set_speeds'] = {
   }
 };
 
+
 Blockly.Blocks['motor_rotate_degrees'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("motor")
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
-        .appendField("rotate");
-    this.appendValueInput("degrees")
-        .setCheck("Number");
-    this.appendDummyInput()
-        .appendField("degrees at");
+        .appendField("rotate at");
     this.appendValueInput("speed")
         .setCheck("Number");
     this.appendDummyInput()
         .appendField("% speed");
+    this.appendValueInput("degrees")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("degrees");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -169,15 +170,14 @@ Blockly.Blocks['motor_rotate_target'] = {
     this.appendDummyInput()
         .appendField("motor")
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor")
-        .appendField("rotate to encoder count");
-    this.appendValueInput("count")
-        .setCheck("Number");
-    this.appendDummyInput()
-        .appendField("at");
+        .appendField("rotate at");
     this.appendValueInput("speed")
         .setCheck("Number");
     this.appendDummyInput()
-        .appendField("% speed");
+        .appendField("% speed to encoder count");
+    this.appendValueInput("count")
+        .setCheck("Number");
+    this.appendDummyInput();
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

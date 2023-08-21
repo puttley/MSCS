@@ -21,26 +21,16 @@ Blockly.Python['buttons_status'] = function(block) {
 Blockly.Python['motor_set_power'] = function(block) {
   var dropdown_motor = block.getFieldValue('motor');
   var value_power = Blockly.Python.valueToCode(block, 'power', Blockly.Python.ORDER_ATOMIC);
-  if (dropdown_motor === "1234"){
-    var code = 'msl.setMotorPowers(' + value_power + ',' + value_power + ',' + value_power + ',' + value_power + ')' + '\n';
-    return code;
-  }else{
-    var code = 'msl.setMotorPower(' + dropdown_motor + ',' + value_power + ')' + '\n';
-    return code;
-  }
+  var code = 'msl.setMotorPower(' + dropdown_motor + ',' + value_power + ')' + '\n';
+  return code;
 };
 
 
 Blockly.Python['motor_set_speed'] = function(block) {
   var dropdown_motor = block.getFieldValue('motor');
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  if (dropdown_motor === "1234"){
-    var code = 'msl.setMotorSpeeds(' + value_speed + ',' + value_speed + ',' + value_speed + ',' + value_speed + ')' + '\n';
-    return code;
-  }else{
-    var code = 'msl.setMotorSpeed(' + dropdown_motor + ',' + value_speed + ')' + '\n';
-    return code;
-  }
+  var code = 'msl.setMotorSpeed(' + dropdown_motor + ',' + value_speed + ')' + '\n';
+  return code;
 };
 
 
@@ -67,7 +57,7 @@ Blockly.Python['motor_rotate_degrees'] = function(block) {
   var dropdown_motor = block.getFieldValue('motor');
   var value_degrees = Blockly.Python.valueToCode(block, 'degrees', Blockly.Python.ORDER_ATOMIC);
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setMotorDegree(' + dropdown_motor + ',' + value_degrees + ',' + value_speed + ')' + '\n';
+  var code = 'msl.setMotorDegree(' + dropdown_motor + ',' + value_speed + ',' + value_degrees + ')' + '\n';
   return code;
 };
 
@@ -75,7 +65,7 @@ Blockly.Python['motor_rotate_target'] = function(block) {
   var dropdown_motor = block.getFieldValue('motor');
   var value_count = Blockly.Python.valueToCode(block, 'count', Blockly.Python.ORDER_ATOMIC);
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setMotorTarget(' + dropdown_motor + ',' + value_count + ',' + value_speed + ')' + '\n';
+  var code = 'msl.setMotorTarget(' + dropdown_motor + ',' + value_speed + ',' + value_count + ')' + '\n';
   return code;
 };
 

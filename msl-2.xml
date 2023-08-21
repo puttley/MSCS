@@ -25,7 +25,7 @@
                 <field name="CPU4">1234</field>
                 <next>
                   <block type="field_static" id="joDMihFh?yR*1OvH.x/R">
-                    <field name="TEXT">rotate</field>
+                    <field name="TEXT">rotate at</field>
                   </block>
                 </next>
               </block>
@@ -33,35 +33,35 @@
           </block>
         </statement>
         <next>
-          <block type="input_value" id="Q[d[ms$#~jSEX/kCSO-y">
-            <field name="INPUTNAME">degrees</field>
+          <block type="input_value" id="0D/`lkhDK0!m3Pi;g8Sh">
+            <field name="INPUTNAME">speed</field>
             <field name="ALIGN">LEFT</field>
             <value name="TYPE">
-              <shadow type="type_null" id=",5_Uu3FXJqz-q.zRn.=#"></shadow>
-              <block type="type_number" id="/uOSVdgHTk]v-$(txoG`"></block>
+              <shadow type="type_null" id="b54+~nr76tf!$+0ePPY0"></shadow>
+              <block type="type_number" id="6.DB,Pv-Ctc5#Sv@guP8"></block>
             </value>
             <next>
-              <block type="input_dummy" id="Kh#zmp%Pt#TTc4F%xN};">
+              <block type="input_dummy" id="RSu$)O]vI}vST`}ikVX|">
                 <field name="ALIGN">LEFT</field>
                 <statement name="FIELDS">
-                  <block type="field_static" id="Lph(GLtHYKg3b9YdffKi">
-                    <field name="TEXT">degrees at</field>
+                  <block type="field_static" id="_}ik+lXU5?byhF1:hM(e">
+                    <field name="TEXT">% speed</field>
                   </block>
                 </statement>
                 <next>
-                  <block type="input_value" id="0D/`lkhDK0!m3Pi;g8Sh">
-                    <field name="INPUTNAME">speed</field>
+                  <block type="input_value" id="Q[d[ms$#~jSEX/kCSO-y">
+                    <field name="INPUTNAME">degrees</field>
                     <field name="ALIGN">LEFT</field>
                     <value name="TYPE">
-                      <shadow type="type_null" id="b54+~nr76tf!$+0ePPY0"></shadow>
-                      <block type="type_number" id="6.DB,Pv-Ctc5#Sv@guP8"></block>
+                      <shadow type="type_null" id=",5_Uu3FXJqz-q.zRn.=#"></shadow>
+                      <block type="type_number" id="/uOSVdgHTk]v-$(txoG`"></block>
                     </value>
                     <next>
-                      <block type="input_dummy" id="RSu$)O]vI}vST`}ikVX|">
+                      <block type="input_dummy" id="Kh#zmp%Pt#TTc4F%xN};">
                         <field name="ALIGN">LEFT</field>
                         <statement name="FIELDS">
-                          <block type="field_static" id="_}ik+lXU5?byhF1:hM(e">
-                            <field name="TEXT">% speed</field>
+                          <block type="field_static" id="Lph(GLtHYKg3b9YdffKi">
+                            <field name="TEXT">degrees</field>
                           </block>
                         </statement>
                       </block>
@@ -493,7 +493,7 @@
                 <field name="CPU4">1234</field>
                 <next>
                   <block type="field_static" id="U$8+oh?3BleE_1*C*:Kl">
-                    <field name="TEXT">rotate to encoder count</field>
+                    <field name="TEXT">rotate at</field>
                   </block>
                 </next>
               </block>
@@ -501,37 +501,32 @@
           </block>
         </statement>
         <next>
-          <block type="input_value" id="Q[d[ms$#~jSEX/kCSO-y">
-            <field name="INPUTNAME">count</field>
+          <block type="input_value" id="0D/`lkhDK0!m3Pi;g8Sh">
+            <field name="INPUTNAME">speed</field>
             <field name="ALIGN">LEFT</field>
             <value name="TYPE">
-              <shadow type="type_null" id=",5_Uu3FXJqz-q.zRn.=#"></shadow>
-              <block type="type_number" id="/uOSVdgHTk]v-$(txoG`"></block>
+              <shadow type="type_null" id="b54+~nr76tf!$+0ePPY0"></shadow>
+              <block type="type_number" id="6.DB,Pv-Ctc5#Sv@guP8"></block>
             </value>
             <next>
-              <block type="input_dummy" id="Kh#zmp%Pt#TTc4F%xN};">
+              <block type="input_dummy" id="RSu$)O]vI}vST`}ikVX|">
                 <field name="ALIGN">LEFT</field>
                 <statement name="FIELDS">
-                  <block type="field_static" id="Lph(GLtHYKg3b9YdffKi">
-                    <field name="TEXT">at</field>
+                  <block type="field_static" id="_}ik+lXU5?byhF1:hM(e">
+                    <field name="TEXT">% speed to encoder count</field>
                   </block>
                 </statement>
                 <next>
-                  <block type="input_value" id="0D/`lkhDK0!m3Pi;g8Sh">
-                    <field name="INPUTNAME">speed</field>
+                  <block type="input_value" id="Q[d[ms$#~jSEX/kCSO-y">
+                    <field name="INPUTNAME">count</field>
                     <field name="ALIGN">LEFT</field>
                     <value name="TYPE">
-                      <shadow type="type_null" id="b54+~nr76tf!$+0ePPY0"></shadow>
-                      <block type="type_number" id="6.DB,Pv-Ctc5#Sv@guP8"></block>
+                      <shadow type="type_null" id=",5_Uu3FXJqz-q.zRn.=#"></shadow>
+                      <block type="type_number" id="/uOSVdgHTk]v-$(txoG`"></block>
                     </value>
                     <next>
-                      <block type="input_dummy" id="RSu$)O]vI}vST`}ikVX|">
+                      <block type="input_dummy" id="Kh#zmp%Pt#TTc4F%xN};">
                         <field name="ALIGN">LEFT</field>
-                        <statement name="FIELDS">
-                          <block type="field_static" id="_}ik+lXU5?byhF1:hM(e">
-                            <field name="TEXT">% speed</field>
-                          </block>
-                        </statement>
                       </block>
                     </next>
                   </block>
@@ -1164,6 +1159,148 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="A*Su0x@#AYFqc7;$BCF/">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="#[qy9F^P?K`@aQDO^}MU" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_motor_invert</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="~:blJ0ewD~,t1kcC#cwK">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="D[(A$Q22zyYl(jHGw7bj">
+            <field name="TEXT">motor</field>
+            <next>
+              <block type="field_dropdown" id="O*gU]R;mpZb[pH^T4l76">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">motor</field>
+                <field name="USER0">1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">4</field>
+                <field name="CPU3">4</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="gbY52h~]Dl83~MCiG}Am">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="S|STv6](11bDD(A=TMgj">
+                <field name="TEXT">invert direction</field>
+                <next>
+                  <block type="field_dropdown" id="5JGUiC?cnq+O$f.$2G,R">
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">invert</field>
+                    <field name="USER0">True</field>
+                    <field name="CPU0">True</field>
+                    <field name="USER1">False</field>
+                    <field name="CPU1">False</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="o^{wmNLBsTvo^T3xiUW." deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="v_N_?h40w@AX`:.??Rp%" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="{=eJ,S?9qf{_,~D~k7A*"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="u~6s!JvQ[r7HmH3CcIdI"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="DG3pkNJCQsiRlUlFle!U">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="#[qy9F^P?K`@aQDO^}MU" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">set_servo_invert</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="~:blJ0ewD~,t1kcC#cwK">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="D[(A$Q22zyYl(jHGw7bj">
+            <field name="TEXT">servo</field>
+            <next>
+              <block type="field_dropdown" id="O*gU]R;mpZb[pH^T4l76">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">servo</field>
+                <field name="USER0">1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">4</field>
+                <field name="CPU3">4</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="gbY52h~]Dl83~MCiG}Am">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="S|STv6](11bDD(A=TMgj">
+                <field name="TEXT">invert direction</field>
+                <next>
+                  <block type="field_dropdown" id="5JGUiC?cnq+O$f.$2G,R">
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
+                    <field name="FIELDNAME">invert</field>
+                    <field name="USER0">True</field>
+                    <field name="CPU0">True</field>
+                    <field name="USER1">False</field>
+                    <field name="CPU1">False</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="o^{wmNLBsTvo^T3xiUW." deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="v_N_?h40w@AX`:.??Rp%" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="{=eJ,S?9qf{_,~D~k7A*"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="u~6s!JvQ[r7HmH3CcIdI"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="DG3pkNJCQsiRlUlFle!U">
         <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
