@@ -1,5 +1,5 @@
 Blockly.Python['program_begin'] = function(block) {
-  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.setEnableMotors()' + '\n'; // forces statement to top of code generator
+  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.resetEncoder(1234)' + '\n' + 'msl.setEnableMotors()' +'\n'; // forces statement to top of code generator
   var code = '\n';
   return code;
 };
@@ -90,7 +90,7 @@ Blockly.Python['motor_busy'] = function(block) {
 Blockly.Python['set_motor_invert'] = function(block) {
   var dropdown_motor = block.getFieldValue('motor');
   var dropdown_invert = block.getFieldValue('invert');
-  var code = 'msl.setMotorInvert(' + dropdown_motor + ',' + "'" + dropdown_invert + "'" + ')';
+  var code = 'msl.setMotorInvert(' + dropdown_motor + ',' + "'" + dropdown_invert + "'" + ')'  + '\n';
   return code;
 };
 

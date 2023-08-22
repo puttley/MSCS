@@ -1200,10 +1200,10 @@
                   <block type="field_dropdown" id="5JGUiC?cnq+O$f.$2G,R">
                     <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">invert</field>
-                    <field name="USER0">True</field>
-                    <field name="CPU0">True</field>
-                    <field name="USER1">False</field>
-                    <field name="CPU1">False</field>
+                    <field name="USER0">true</field>
+                    <field name="CPU0">true</field>
+                    <field name="USER1">false</field>
+                    <field name="CPU1">false</field>
                   </block>
                 </next>
               </block>

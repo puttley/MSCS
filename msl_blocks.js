@@ -226,7 +226,7 @@ Blockly.Blocks['set_motor_invert'] = {
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "motor");
     this.appendDummyInput()
         .appendField("invert direction")
-        .appendField(new Blockly.FieldDropdown([["True","True"], ["False","False"]]), "invert");
+        .appendField(new Blockly.FieldDropdown([["true","true"], ["false","false"]]), "invert");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
