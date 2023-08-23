@@ -967,14 +967,14 @@
             <field name="FIELDNAME">button</field>
             <field name="USER0">start</field>
             <field name="CPU0">start</field>
-            <field name="USER1">up</field>
-            <field name="CPU1">up</field>
-            <field name="USER2">down</field>
-            <field name="CPU2">down</field>
-            <field name="USER3">right</field>
-            <field name="CPU3">right</field>
-            <field name="USER4">left</field>
-            <field name="CPU4">left</field>
+            <field name="USER1">a</field>
+            <field name="CPU1">a</field>
+            <field name="USER2">b</field>
+            <field name="CPU2">b</field>
+            <field name="USER3">c</field>
+            <field name="CPU3">c</field>
+            <field name="USER4">d</field>
+            <field name="CPU4">d</field>
             <next>
               <block type="field_static" id="A]DtS*7,A`%#K;XOG3b!">
                 <field name="TEXT">button is pressed</field>
@@ -1936,7 +1936,7 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_static" id="~xUuOC8WP)C`S8m@DiyJ">
-            <field name="TEXT">lidar sensor</field>
+            <field name="TEXT">ToF Sensor</field>
             <next>
               <block type="field_dropdown" id="[$KPM4TWNJVm~dapTKC;">
                 <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
@@ -1970,6 +1970,59 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="913dPF_Dgp|a!AOESCD,">
+        <mutation colour="#5b67a5"></mutation>
+        <field name="HUE">230</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="bYmXgt5n`KJ_[w?s9(be" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="BOTH"></mutation>
+    <field name="NAME">reset_encoders</field>
+    <field name="INLINE">INT</field>
+    <field name="CONNECTIONS">BOTH</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="?YIZNdrp5`//zN3j^,Y)">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="448[8(T8[bC5r;LY^`(*">
+            <field name="TEXT">reset encoder</field>
+            <next>
+              <block type="field_dropdown" id="f{6v7Uvh?-%PXa;p`Pc/">
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <field name="FIELDNAME">encoder</field>
+                <field name="USER0">1</field>
+                <field name="CPU0">1</field>
+                <field name="USER1">2</field>
+                <field name="CPU1">2</field>
+                <field name="USER2">3</field>
+                <field name="CPU2">3</field>
+                <field name="USER3">4</field>
+                <field name="CPU3">4</field>
+                <field name="USER4">1234</field>
+                <field name="CPU4">1234</field>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="KILLB~H*lB_$`A`rvU!=" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="jT%1.c@?;nzMXhpmG[1p" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="TOPTYPE">
+      <shadow type="type_null" id="}ptiQ$HDPxC?C1x?SU6t"></shadow>
+    </value>
+    <value name="BOTTOMTYPE">
+      <shadow type="type_null" id="-6.My9A7Dew7P#K=Ck5@"></shadow>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="j!k*:{q[q%B$bLc~o_%i">
         <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
