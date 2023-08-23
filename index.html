@@ -112,46 +112,50 @@ Company: PITSCO Education LLC
   <textarea id="content_json" class="content" wrap="off"></textarea>
 
   <xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Movement" colour= "#7B1FA2">
-      <block type="move_speed">
+    <category name="Drive" colour= "#7B1FA2">
+      <block type="start_driving">
         <value name="speed">
           <shadow type="math_number">
             <field name="NUM">50</field>
           </shadow>
         </value>
       </block>
-      <block type="move_distance">
+      <block type="drive_steering">
+        <value name="speedL">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+        <value name="speedR">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="stop_driving"></block>
+      <block type="drive_distance">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
         <value name="distance">
           <shadow type="math_number">
-            <field name="NUM">10</field>
+            <field name="NUM">20</field>
           </shadow>
         </value>
       </block>
-      <block type="move_start"></block>
-      <block type="move_stop"></block>
-      <block type="move_spin">
+      <block type="spin_turn">
         <value name="degrees">
           <shadow type="math_number">
             <field name="NUM">90</field>
           </shadow>
         </value>
       </block>
-      <block type="move_pivot">
+      <block type="pivot_turn">
         <value name="degrees">
           <shadow type="math_number">
             <field name="NUM">90</field>
-          </shadow>
-        </value>
-      </block>
-      <block type="move_steering">
-        <value name="left speed">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
-          </shadow>
-        </value>
-        <value name="right speed">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
           </shadow>
         </value>
       </block>
@@ -309,8 +313,8 @@ Company: PITSCO Education LLC
     </category>
 
     <category name="Sensors" colour= "#ec5b13">
-      <block type="sensor_ultrasonic"></block>
-      <block type="sensor_line"></block>
+      <block type="get_lidar"></block>
+      <block type="get_encoder"></block>
     </category>
 
     <category name="Control" colour= "#eea011">

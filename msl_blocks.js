@@ -350,7 +350,7 @@ Blockly.Blocks['set_servo_invert'] = {
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "servo");
     this.appendDummyInput()
         .appendField("invert direction")
-        .appendField(new Blockly.FieldDropdown([["True","True"], ["False","False"]]), "invert");
+        .appendField(new Blockly.FieldDropdown([["true","true"], ["false","false"]]), "invert");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -360,29 +360,162 @@ Blockly.Blocks['set_servo_invert'] = {
   }
 };
 
-
-
-
-Blockly.Blocks['move_distance'] = {
+Blockly.Blocks['set_drive_speed'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("move");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"]]), "direction");
-    this.appendDummyInput()
-        .appendField("for");
-    this.appendValueInput("distance")
+        .appendField("set drive speed to");
+    this.appendValueInput("speed")
         .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("%");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['start_driving'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("start driving")
+        .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"], ["pivot right","pivotR"], ["pivot left","pivotL"], ["spin right","spinR"], ["spin left","spinL"]]), "action");
+    this.appendValueInput("speed")
+        .setCheck("Number")
+        .appendField("at");
+    this.appendDummyInput()
+        .appendField("% speed");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['spin_turn'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("spin")
+        .appendField(new Blockly.FieldDropdown([["right","right"], ["left","left"]]), "action");
+    this.appendValueInput("degrees")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("degrees");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['pivot_turn'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("pivot")
+        .appendField(new Blockly.FieldDropdown([["right","right"], ["left","left"]]), "action");
+    this.appendValueInput("degrees")
+        .setCheck("Number");
+    this.appendDummyInput()
+        .appendField("degrees");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['drive_distance'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("drive")
+        .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"]]), "direction");
+    this.appendValueInput("speed")
+        .setCheck("Number")
+        .appendField("at");
+    this.appendValueInput("distance")
+        .setCheck(null)
+        .appendField("% speed for");
     this.appendDummyInput()
         .appendField("cm");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("Move robot a set distance and stop. Continue to next block once robot reaches it's target.");
+ this.setTooltip("");
  this.setHelpUrl("");
   }
 };
+
+Blockly.Blocks['drive_steering'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("start driving")
+        .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"]]), "direction");
+    this.appendValueInput("speedL")
+        .setCheck("Number")
+        .appendField("left speed %");
+    this.appendValueInput("speedR")
+        .setCheck("Number")
+        .appendField("right speed %");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['stop_driving'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("stop driving");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['get_encoder'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("encoder")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "encoder")
+        .appendField("count");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['get_lidar'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("lidar sensor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "value");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+
+
+
 
 Blockly.Blocks['move_start'] = {
   init: function() {
@@ -412,22 +545,6 @@ Blockly.Blocks['move_stop'] = {
   }
 };
 
-Blockly.Blocks['move_speed'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("set move speed to");
-    this.appendValueInput("speed")
-        .setCheck("Number");
-    this.appendDummyInput()
-        .appendField("%");
-    this.setInputsInline(true);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour("#7B1FA2");
- this.setTooltip("Sets the speed of the robot. The speed range is 0 - 100%.");
- this.setHelpUrl("");
-  }
-};
 
 Blockly.Blocks['move_spin'] = {
   init: function() {

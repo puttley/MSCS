@@ -13,7 +13,6 @@ Blockly.Python['program_end'] = function(block) {
 Blockly.Python['buttons_status'] = function(block) {
   var dropdown_button = block.getFieldValue('button');
   var code = 'msl.getButtonStatus(' + "'" + dropdown_button + "'" + ')';
-  // TODO: Change ORDER_NONE to the correct strength.
   return [code, Blockly.Python.ORDER_NONE];
 };
 
@@ -141,31 +140,75 @@ Blockly.Python['set_servo_invert'] = function(block) {
   return code;
 };
 
+Blockly.Python['set_drive_speed'] = function(block) {
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setDriveSpeed(' + value_speed + ')\n';
+  return code;
+};
 
+Blockly.Python['start_driving'] = function(block) {
+  var dropdown_action = block.getFieldValue('action');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setDrive(' + "'" + dropdown_action + "'" + ',' + value_speed + ')\n';
+  return code;
+};
+
+Blockly.Python['spin_turn'] = function(block) {
+  var dropdown_action = block.getFieldValue('action');
+  var value_degrees = Blockly.Python.valueToCode(block, 'degrees', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setSpinDegrees(' + "'" + dropdown_action + "'" + ',' + value_degrees + ')\n';
+  return code;
+};
+
+Blockly.Python['pivot_turn'] = function(block) {
+  var dropdown_action = block.getFieldValue('action');
+  var value_degrees = Blockly.Python.valueToCode(block, 'degrees', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setPivotDegrees(' + "'" + dropdown_action + "'" + ',' + value_degrees + ')\n';
+  return code;
+};
+
+Blockly.Python['drive_distance'] = function(block) {
+  var dropdown_direction = block.getFieldValue('direction');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
+  var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setDriveDistance(' + "'" + dropdown_direction + "'" + ',' + value_speed + ',' + value_distance + ')\n';
+  return code;
+};
+
+Blockly.Python['drive_steering'] = function(block) {
+  var dropdown_direction = block.getFieldValue('direction');
+  var value_speedl = Blockly.Python.valueToCode(block, 'speedL', Blockly.Python.ORDER_ATOMIC);
+  var value_speedr = Blockly.Python.valueToCode(block, 'speedR', Blockly.Python.ORDER_ATOMIC);
+  var code = 'msl.setDriveSpeeds(' + "'" + dropdown_direction + "'" + ',' + value_speedl + ',' + value_speedr + ')\n';
+  return code;
+};
+
+Blockly.Python['stop_driving'] = function(block) {
+  var code = 'msl.setDriveStop()' + '\n';
+  return code;
+};
 
 Blockly.Python['delay'] = function(block) {
   var number_name = block.getFieldValue('NAME');
-  // TODO: Assemble Python into code variable.
   var code = 'msl.time.sleep(' + number_name + ')\n';
   return code;
 };
 
-
-Blockly.Python['move_distance'] = function(block) {
-  var dropdown_direction = block.getFieldValue('direction');
-  var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
-  value_distance = value_distance.replace(/\(|\)/g, '');    // strips parenthesis out of negative string
-    if(!isNaN(value_distance)){
-      //  console.log('It is a number');
-        value_distance = parseInt(value_distance);               // integers only
-        value_distance = Math.abs(value_distance);               // ABS value
-      }
-      else {
-      //  console.log('It is not a number');
-      }
-  var code = 'LUMA.move_distance(' + '"'+ dropdown_direction + '"' + ',' + value_distance + ')\n';
-  return code;
+Blockly.Python['get_encoder'] = function(block) {
+  var dropdown_encoder = block.getFieldValue('encoder');
+  var code = 'msl.getEncoderCount(' + dropdown_encoder + ')';
+  return [code, Blockly.Python.ORDER_NONE];
 };
+
+Blockly.Python['get_lidar'] = function(block) {
+  var dropdown_value = block.getFieldValue('value');
+  var code = 'msl.getLidarValue(' + dropdown_value + ')';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
+
+
+
 
 Blockly.Python['move_start'] = function(block) {
   var dropdown_direction = block.getFieldValue('direction');
@@ -180,20 +223,6 @@ Blockly.Python['move_stop'] = function(block) {
   return code;
 };
 
-Blockly.Python['move_speed'] = function(block) {
-  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  value_speed = value_speed.replace(/\(|\)/g, '');    // strips parenthesis out of negative string
-  if(!isNaN(value_speed)){
-    //  console.log('It is a number');
-      value_speed = parseInt(value_speed);               // integers only
-      value_speed = Math.abs(value_speed);               // ABS value
-    }
-    else {
-    //  console.log('It is not a number');
-    }
-  var code = 'LUMA.set_move_speed(' + value_speed + ')\n';
-  return code;
-};
 
 Blockly.Python['move_spin'] = function(block) {
   var dropdown_direction = block.getFieldValue('direction');
