@@ -132,6 +132,7 @@ Company: PITSCO Education LLC
           </shadow>
         </value>
       </block>
+      <block type="set_drive_invert"></block>
       <block type="stop_driving"></block>
       <block type="drive_distance">
         <value name="speed">
@@ -146,6 +147,11 @@ Company: PITSCO Education LLC
         </value>
       </block>
       <block type="spin_turn">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
         <value name="degrees">
           <shadow type="math_number">
             <field name="NUM">90</field>
@@ -153,6 +159,11 @@ Company: PITSCO Education LLC
         </value>
       </block>
       <block type="pivot_turn">
+        <value name="speed">
+          <shadow type="math_number">
+            <field name="NUM">50</field>
+          </shadow>
+        </value>
         <value name="degrees">
           <shadow type="math_number">
             <field name="NUM">90</field>
@@ -839,14 +850,30 @@ Company: PITSCO Education LLC
 <script>
 
 
+const sTerm = setInterval(printWindow, 250);
+var w;
+
+function printWindow(){
+  try{
+    w.document.body.innerHTML = window.document.getElementById('term').innerHTML;
+  }
+  catch(err){}
+}
+
+
   function myTerminal() {
     var x = document.getElementById("term");
     if (x.style.display === "none") {
       x.style.display = "block";
       document.getElementById('REPL').style.color = '#fff164'; // lime YELLOW
+      w = window.open();
+      w.document.title = 'REPL Output';
+      const sTerm = setInterval(printWindow, 250);
     } else {
       x.style.display = "none";
       document.getElementById('REPL').style.color = '#fff'; // white
+      w.close();
+      clearInterval(sTerm);
     }
 }
 

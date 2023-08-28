@@ -1,5 +1,5 @@
 Blockly.Python['program_begin'] = function(block) {
-  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.resetEncoder(1234)' + '\n' + 'msl.setEnableMotors()' +'\n'; // forces statement to top of code generator
+  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.setupTof(1)' + '\n' + 'msl.setupTof(2)' + '\n' + 'msl.resetEncoder(1234)' + '\n' + 'msl.setEnableMotors()' +'\n'; // forces statement to top of code generator
   var code = '\n';
   return code;
 };
@@ -149,21 +149,37 @@ Blockly.Python['set_drive_speed'] = function(block) {
 Blockly.Python['start_driving'] = function(block) {
   var dropdown_action = block.getFieldValue('action');
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setDrive(' + "'" + dropdown_action + "'" + ',' + value_speed + ')\n';
+  var code = 'msl.setDriveSpeed(' + "'" + dropdown_action + "'" + ',' + value_speed + ')\n';
   return code;
 };
 
 Blockly.Python['spin_turn'] = function(block) {
   var dropdown_action = block.getFieldValue('action');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
   var value_degrees = Blockly.Python.valueToCode(block, 'degrees', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setSpinDegrees(' + "'" + dropdown_action + "'" + ',' + value_degrees + ')\n';
+  var checkbox_wait = block.getFieldValue('wait') === 'TRUE'
+  var set_wait;
+  if (checkbox_wait === true){
+    set_wait = "True";
+  } else {
+    set_wait = "False";
+  }
+  var code = 'msl.setSpinDegrees(' + "'" + dropdown_action + "'" + ',' + value_speed + ',' + value_degrees + ',' + set_wait + ')\n';
   return code;
 };
 
 Blockly.Python['pivot_turn'] = function(block) {
   var dropdown_action = block.getFieldValue('action');
+  var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
   var value_degrees = Blockly.Python.valueToCode(block, 'degrees', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setPivotDegrees(' + "'" + dropdown_action + "'" + ',' + value_degrees + ')\n';
+  var checkbox_wait = block.getFieldValue('wait') === 'TRUE';
+  var set_wait;
+  if (checkbox_wait === true){
+    set_wait = "True";
+  } else {
+    set_wait = "False";
+  }
+  var code = 'msl.setPivotDegrees(' + "'" + dropdown_action + "'" + ',' + value_speed + ',' + value_degrees + ',' + set_wait + ')\n';
   return code;
 };
 
@@ -171,7 +187,14 @@ Blockly.Python['drive_distance'] = function(block) {
   var dropdown_direction = block.getFieldValue('direction');
   var value_speed = Blockly.Python.valueToCode(block, 'speed', Blockly.Python.ORDER_ATOMIC);
   var value_distance = Blockly.Python.valueToCode(block, 'distance', Blockly.Python.ORDER_ATOMIC);
-  var code = 'msl.setDriveDistance(' + "'" + dropdown_direction + "'" + ',' + value_speed + ',' + value_distance + ')\n';
+  var checkbox_wait = block.getFieldValue('wait') === 'TRUE';
+  var set_wait;
+  if (checkbox_wait === true){
+    set_wait = "True";
+  } else {
+    set_wait = "False";
+  }
+  var code = 'msl.setDriveDistance(' + "'" + dropdown_direction + "'" + ',' + value_speed + ',' + value_distance + ',' + set_wait + ')\n';
   return code;
 };
 
@@ -185,6 +208,12 @@ Blockly.Python['drive_steering'] = function(block) {
 
 Blockly.Python['stop_driving'] = function(block) {
   var code = 'msl.setDriveStop()' + '\n';
+  return code;
+};
+
+Blockly.Python['set_drive_invert'] = function(block) {
+  var dropdown_invert = block.getFieldValue('invert');
+  var code = 'msl.setDriveInvert(' + dropdown_invert + ')' + '\n';
   return code;
 };
 
@@ -202,7 +231,7 @@ Blockly.Python['get_encoder'] = function(block) {
 
 Blockly.Python['get_lidar'] = function(block) {
   var dropdown_value = block.getFieldValue('value');
-  var code = 'msl.getLidarValue(' + dropdown_value + ')';
+  var code = 'msl.getToFSensor(' + dropdown_value + ')';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
@@ -219,10 +248,9 @@ Blockly.Python['reset_encoders'] = function(block) {
 
 
 Blockly.Python['pixel_animate'] = function(block) {
-  var dropdown_animation = 'msl.' + block.getFieldValue('animation');
+  var dropdown_animation = block.getFieldValue('animation');
   var number_seconds = block.getFieldValue('seconds');
-  // TODO: Assemble Python into code variable.
-  var code = 'msl.setPixelAnimation(' + dropdown_animation + ','  + number_seconds + ')\n';
+  var code = 'msl.setPixelAnimation(' + "'" + dropdown_animation + "'" + ','  + number_seconds + ')\n';
   return code;
 };
 
@@ -230,7 +258,6 @@ Blockly.Python['pixel_blink'] = function(block) {
   var dropdown_pixel = block.getFieldValue('pixel');
   var value_color = Blockly.Python.valueToCode(block, 'color', Blockly.Python.ORDER_ATOMIC);
   var value_times = Blockly.Python.valueToCode(block, 'times', Blockly.Python.ORDER_ATOMIC);
-  // TODO: Assemble Python into code variable.
   var color1 = value_color;
   var re = /[0-9A-Fa-f]{6}/g;
   var inputString = color1;

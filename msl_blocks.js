@@ -380,7 +380,7 @@ Blockly.Blocks['set_drive_speed'] = {
 Blockly.Blocks['start_driving'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("start driving")
+        .appendField("drive")
         .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"], ["pivot right","pivotR"], ["pivot left","pivotL"], ["spin right","spinR"], ["spin left","spinL"]]), "action");
     this.appendValueInput("speed")
         .setCheck("Number")
@@ -401,10 +401,17 @@ Blockly.Blocks['spin_turn'] = {
     this.appendDummyInput()
         .appendField("spin")
         .appendField(new Blockly.FieldDropdown([["right","right"], ["left","left"]]), "action");
+    this.appendValueInput("speed")
+        .setCheck("Number")
+        .appendField("at");
+    this.appendDummyInput()
+        .appendField("% speed for");
     this.appendValueInput("degrees")
         .setCheck("Number");
     this.appendDummyInput()
-        .appendField("degrees");
+        .appendField("degrees")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
+        .appendField("wait");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -419,10 +426,17 @@ Blockly.Blocks['pivot_turn'] = {
     this.appendDummyInput()
         .appendField("pivot")
         .appendField(new Blockly.FieldDropdown([["right","right"], ["left","left"]]), "action");
+    this.appendValueInput("speed")
+        .setCheck("Number")
+        .appendField("at");
+    this.appendDummyInput()
+        .appendField("% speed for");
     this.appendValueInput("degrees")
         .setCheck("Number");
     this.appendDummyInput()
-        .appendField("degrees");
+        .appendField("degrees")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
+        .appendField("wait");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -444,7 +458,9 @@ Blockly.Blocks['drive_distance'] = {
         .setCheck(null)
         .appendField("% speed for");
     this.appendDummyInput()
-        .appendField("cm");
+        .appendField("cm")
+        .appendField(new Blockly.FieldCheckbox("TRUE"), "wait")
+        .appendField("wait");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
@@ -478,6 +494,20 @@ Blockly.Blocks['stop_driving'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("stop driving");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#7B1FA2");
+ this.setTooltip("");
+ this.setHelpUrl("");
+  }
+};
+
+Blockly.Blocks['set_drive_invert'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("invert drive direction")
+        .appendField(new Blockly.FieldDropdown([["true","True"], ["false","False"]]), "invert");
+    this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
