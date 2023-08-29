@@ -380,7 +380,7 @@ Blockly.Blocks['set_drive_speed'] = {
 Blockly.Blocks['start_driving'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("drive")
+        .appendField("start driving")
         .appendField(new Blockly.FieldDropdown([["forward","forward"], ["reverse","reverse"], ["pivot right","pivotR"], ["pivot left","pivotL"], ["spin right","spinR"], ["spin left","spinL"]]), "action");
     this.appendValueInput("speed")
         .setCheck("Number")
@@ -533,8 +533,8 @@ Blockly.Blocks['get_encoder'] = {
 Blockly.Blocks['get_lidar'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("ToF sensor")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "value");
+        .appendField("ToF Sensor")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"]]), "value");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour("#ec5b13");

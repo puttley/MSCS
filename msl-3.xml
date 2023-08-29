@@ -2022,16 +2022,12 @@
             <field name="TEXT">ToF Sensor</field>
             <next>
               <block type="field_dropdown" id="[$KPM4TWNJVm~dapTKC;">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">value</field>
                 <field name="USER0">1</field>
                 <field name="CPU0">1</field>
                 <field name="USER1">2</field>
                 <field name="CPU1">2</field>
-                <field name="USER2">3</field>
-                <field name="CPU2">3</field>
-                <field name="USER3">4</field>
-                <field name="CPU3">4</field>
               </block>
             </next>
           </block>
