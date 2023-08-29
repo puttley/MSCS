@@ -350,7 +350,7 @@ Blockly.Blocks['set_servo_invert'] = {
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "servo");
     this.appendDummyInput()
         .appendField("invert direction")
-        .appendField(new Blockly.FieldDropdown([["true","true"], ["false","false"]]), "invert");
+        .appendField(new Blockly.FieldDropdown([["true","True"], ["false","False"]]), "invert");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);

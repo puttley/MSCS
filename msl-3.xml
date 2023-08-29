@@ -1272,9 +1272,9 @@
                     <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">invert</field>
                     <field name="USER0">true</field>
-                    <field name="CPU0">true</field>
+                    <field name="CPU0">True</field>
                     <field name="USER1">false</field>
-                    <field name="CPU1">false</field>
+                    <field name="CPU1">False</field>
                   </block>
                 </next>
               </block>
