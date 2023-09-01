@@ -883,7 +883,42 @@ function enterMicroPythonPasteMode() {
   pastemode();
 }
 
-function uploadCPcode(){
+const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+
+async function uploadCPcode(code_){
+
+  let code = code_ == undefined ? Blockly.Python.workspaceToCode(Code.workspace) : code_;
+
+  if (port){
+    if (code) {
+        window.alert("Press OK to upload code.")
+        code = code.replace(/\n/g, "\r");
+        code+='\r\r'; //Snek workaround
+        code = "code=r'''" + code  + "'''";
+      //  serialWrite('\x05${code}\x04');
+      serialWrite('\r\r');
+      for (let i = 1; i <= 25; i++) {
+        serialWrite('\x03');
+        await sleepNow(2);  // 2ms pause
+      }
+      serialWrite('\r');
+      serialWrite('\x05');
+      serialWrite(`${code}`);
+      serialWrite('\x04');
+      serialWrite('\r');
+      var savePY = "with open('code.py','w') as f: f.write(code)";
+      savePY += '\r\r';
+      serialWrite(savePY);
+      serialWrite('\x04');
+    }else{
+      window.alert("No code in the workspace to upload.");
+    }
+  }else{
+      window.alert("Robot is not connected.");
+  }
+}
+
+function uploadCPcodeOLD(){   // ============== DON'T USE ===============
   var checkcode = Blockly.Python.workspaceToCode(Code.workspace);
   if (port){
       if (checkcode) {
