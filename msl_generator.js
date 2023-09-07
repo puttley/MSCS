@@ -136,7 +136,7 @@ Blockly.Python['get_servo_position'] = function(block) {
 Blockly.Python['set_servo_invert'] = function(block) {
   var dropdown_servo = block.getFieldValue('servo');
   var dropdown_invert = block.getFieldValue('invert');
-  var code = 'msl.setServoInvert(' + dropdown_servo + ',' + dropdown_invert + ')';
+  var code = 'msl.setServoInvert(' + dropdown_servo + ',' + dropdown_invert + ')\n';
   return code;
 };
 
