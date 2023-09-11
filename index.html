@@ -850,15 +850,15 @@ Company: PITSCO Education LLC
 <script>
 
 
-const sTerm = setInterval(printWindow, 250);
-var w;
+//const sTerm = setInterval(printWindow, 250);
+//var w;
 
-function printWindow(){
-  try{
-    w.document.body.innerHTML = window.document.getElementById('term').innerHTML;
-  }
-  catch(err){}
-}
+//function printWindow(){
+//  try{
+//    w.document.body.innerHTML = window.document.getElementById('term').innerHTML;
+//  }
+//  catch(err){}
+//}
 
 
   function myTerminal() {
@@ -866,14 +866,14 @@ function printWindow(){
     if (x.style.display === "none") {
       x.style.display = "block";
       document.getElementById('REPL').style.color = '#fff164'; // lime YELLOW
-      w = window.open();
-      w.document.title = 'REPL Output';
-      const sTerm = setInterval(printWindow, 250);
+      //w = window.open();
+      //w.document.title = 'REPL Output';
+      //const sTerm = setInterval(printWindow, 250);
     } else {
       x.style.display = "none";
       document.getElementById('REPL').style.color = '#fff'; // white
-      w.close();
-      clearInterval(sTerm);
+      //w.close();
+      //clearInterval(sTerm);
     }
 }
 
@@ -897,7 +897,7 @@ async function uploadCPcode(code_){
         code = "code=r'''" + code  + "'''";
       //  serialWrite('\x05${code}\x04');
       serialWrite('\r\r');
-      for (let i = 1; i <= 25; i++) {
+      for (let i = 1; i <= 25; i++) {   //send several code interrupts
         serialWrite('\x03');
         await sleepNow(2);  // 2ms pause
       }
@@ -918,45 +918,12 @@ async function uploadCPcode(code_){
   }
 }
 
-function uploadCPcodeOLD(){   // ============== DON'T USE ===============
-  var checkcode = Blockly.Python.workspaceToCode(Code.workspace);
-  if (port){
-      if (checkcode) {
-        window.alert("Press OK to upload code.")
-        serialWrite('\r\x03\x03'); // ctl c >> interrupt any code that is running
-        serialWrite('\r\x03\x03'); // have to do this twice - I don't know why...
-          serialWrite('\x03');     // send another ctl c interrupt (added for msl)
-          serialWrite('\r');       // send a return (added for msl)
-        serialWrite('\x05');       // ctl e >> enter raw paste mode
-        // get code from workspace and send it over serial stream
-        var code = "code=r'''" + 'import MSL_CS as msl' + '\n' + Blockly.Python.workspaceToCode(Code.workspace) + 'while True:' + '\n' + '\t' + 'pass' + "'''";
-        console.log(code); // print the code to the console
-        var ccommand = code.replace(/\n/g, "\r");               /// i added
-        serialWrite(ccommand);
-          serialWrite('\r');  // send a bunch of returns (needed for msl)
-          serialWrite('\r');
-          serialWrite('\r');
-          serialWrite('\r');
-          serialWrite('\r');
-        serialWrite('\x04');  // soft rebbot
-          serialWrite('\r');  // and, another return (added for msl)
-        var command = "with open('code.py','w') as f: f.write(code)"
-        var ccommand = command.replace(/\n/g, "\r");               /// i added
-        serialWrite(ccommand);    // send save code to filesystem
-        serialWrite('\r');        // two returns
-        serialWrite('\r');
-        serialWrite('\x04');      // soft reboot
-      }else{
-        window.alert("No code in the workspace to upload.");
-      }
-   }else{
-     window.alert("Robot is not connected.");
-   }
-}
-
-function rebootCP(){
-  CTLC();
-  CTLD();
+async function rebootCP(){
+  for (let i = 1; i <= 25; i++) {   //send several code interrupts
+    serialWrite('\x03');
+    await sleepNow(2);  // 2ms pause
+  }
+  CTLD(); // soft reboot
 }
 
 function saveCPcode(){
