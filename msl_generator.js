@@ -101,10 +101,10 @@ Blockly.Python['servo_set_speed'] = function(block) {
 };
 
 Blockly.Python['servo_set_speeds'] = function(block) {
-  var value_speed_1 = Blockly.Python.valueToCode(block, 'speed 1', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_2 = Blockly.Python.valueToCode(block, 'speed 2', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_3 = Blockly.Python.valueToCode(block, 'speed 3', Blockly.Python.ORDER_ATOMIC);
-  var value_speed_4 = Blockly.Python.valueToCode(block, 'speed 4', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_1 = Blockly.Python.valueToCode(block, 'speed_1', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_2 = Blockly.Python.valueToCode(block, 'speed_2', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_3 = Blockly.Python.valueToCode(block, 'speed_3', Blockly.Python.ORDER_ATOMIC);
+  var value_speed_4 = Blockly.Python.valueToCode(block, 'speed_4', Blockly.Python.ORDER_ATOMIC);
   var code = 'msl.setServoSpeeds(' + value_speed_1 + ',' + value_speed_2 + ',' + value_speed_3 + ',' + value_speed_4 + ')' + '\n';
   return code;
 };
