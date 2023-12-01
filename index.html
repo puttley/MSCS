@@ -29,6 +29,7 @@ Company: PITSCO Education LLC
   <script src="term.js"></script>
 
 
+
 </head>
 
 <div style="height: 3vh; width: 100%; background-color: #263238;"></div>
@@ -840,8 +841,8 @@ Company: PITSCO Education LLC
 <button id="pasteCP" type="button" onclick=pastecode()>paste code</button>
 <button id="saveCP" type="button" onclick=saveCPcode()>save code</button>
 <button id="uploadCP" type="button" onclick=uploadCPcode()>Upload Code</button>
-<button id="SerialConnectButton" type="button">Connect MSL</button>
-<button id="reboot" type="button" onclick=rebootCP()>Reset MSL</button>
+<button id="SerialConnectButton" type="button">Connect USB</button>
+<button id="reboot" type="button" onclick=rebootCP()>Reset Robot</button>
 <button id="REPL" onclick="myTerminal()">Toggle REPL Terminal</button>
 
 <div style="height: 3vh; width: 100%; background-color: #263238;"></div>
@@ -906,7 +907,8 @@ async function uploadCPcode(code_){
       serialWrite(`${code}`);
       serialWrite('\x04');
       serialWrite('\r');
-      var savePY = "with open('code.py','w') as f: f.write(code)";
+      var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ CircuitPython
+  //  var savePY = "with open('main.py','w') as f: f.write(code)"; // ++ MicroPython
       savePY += '\r\r';
       serialWrite(savePY);
       serialWrite('\x04');
@@ -1016,7 +1018,8 @@ let port;
 const filters = [
   { usbVendorId: 0x21FA, usbProductId: 0x8132 },        // LUMA Robot Controller ID's
   { usbVendorId: 0x239A, usbProductId: 0x80F4 },
-  { usbVendorId: 0x303A, usbProductId: 0x7003 }         // 303A | 7003 is BETA MSCS
+  { usbVendorId: 0x303A, usbProductId: 0x7003 },        // 303A | 7003 is BETA MSCS (CP)
+  { usbVendorId: 0x303A, usbProductId: 0x4001 }         // 303A | 4001 is BETA MSCS (CP)
 ];                                                      // 21FA is Pitsco's USB-IF issued vendor ID
                                                         // lUMA uses 0x21FA and 0x8132
                                                         // BETA units used 239A and 0x80F4
@@ -1062,6 +1065,15 @@ async function serialWrite(data) {
 	}
 }
 
+async function getBT(){
+  navigator.bluetooth.requestDevice({
+  acceptAllDevices: true,
+  optionalServices: ['battery_service'] // Required to access service later.
+})
+.then(device => { /* … */ })
+.catch(error => { console.error(error); });
+}
+
 async function getReader() {
   port = await navigator.serial.requestPort({ filters });
 
@@ -1083,7 +1095,7 @@ async function getReader() {
   rebootCP();
 	await port.open({ baudRate: [speed] });
   console.log("Device is most definitely connected");
-  document.getElementById('SerialConnectButton').innerText = "Connected";
+  document.getElementById('SerialConnectButton').innerText = "USB connected";
   document.getElementById('SerialConnectButton').style.color = '#ACFF33'; // lime green
   document.getElementById('uploadCP').style.color = '#fff'; // white
   document.getElementById('reboot').style.color = '#fff';   // white
