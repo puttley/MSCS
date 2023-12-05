@@ -1,5 +1,5 @@
 Blockly.Python['program_begin'] = function(block) {
-  Blockly.Python.definitions_['import'] = 'import MSL_CS as msl' + '\n' + 'msl.waitForStart()' + '\n' + 'msl.setupToF(1)' + '\n' + 'msl.setupToF(2)' + '\n' + 'msl.resetEncoder(1234)' + '\n' + 'msl.setEnableMotors()' +'\n'; // forces statement to top of code generator
+  Blockly.Python.definitions_['import'] = 'import msl' + '\n' + 'import time' + '\n' +'msl.waitForStart()' + '\n' + 'msl.setupToF(1)' + '\n' + 'msl.setupToF(2)' + '\n' + 'msl.resetEncoder(1234)' + '\n' + 'msl.setEnableMotors()' +'\n'; // forces statement to top of code generator
   var code = '\n';
   return code;
 };
@@ -219,7 +219,7 @@ Blockly.Python['set_drive_invert'] = function(block) {
 
 Blockly.Python['delay'] = function(block) {
   var number_name = block.getFieldValue('NAME');
-  var code = 'msl.time.sleep(' + number_name + ')\n';
+  var code = 'time.sleep(' + number_name + ')\n';
   return code;
 };
 
