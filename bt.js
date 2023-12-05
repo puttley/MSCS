@@ -86,11 +86,12 @@ async function connect() {
   }
   navigator.bluetooth.requestDevice({
 
-    filters: [{namePrefix: [DEVICE_BT_NAME_PREFIX] }],
-    //  filters: [{name: [DEVICE_BT_NAME] }],
-    //  acceptAllDevices: true,
-    //  optionalServices: [NUS_SERVICE_UUID],
-//    ],
+    filters:[
+      {namePrefix: [DEVICE_BT_NAME_PREFIX]},
+
+    ],
+      optionalServices: [NUS_SERVICE_UUID]
+
   }).then(onScanResult).catch(function(e) {
     console.warn('failed to find a device:', e);
     disconnect();
