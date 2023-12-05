@@ -577,7 +577,7 @@ Code.initLanguage = function() {
   document.getElementById('REPL').title = MSG['terminalTooltip'];
   document.getElementById('uploadCP').title = MSG['uploadBlocksTooltip'];
   document.getElementById('SerialConnectButton').title = MSG['connectBlocksTooltip'];
-  document.getElementById('reboot').title = MSG['resetBlocksTooltip'];
+  //document.getElementById('reboot').title = MSG['resetBlocksTooltip'];
 
 
 };

@@ -28,6 +28,8 @@ Company: PITSCO Education LLC
   <script src="./code.js"></script>
   <script src="term.js"></script>
 
+  <script src="bt.js"></script>
+
 
 
 </head>
@@ -840,10 +842,12 @@ Company: PITSCO Education LLC
 <button id="CTLE" type="button" onclick=CTLE()>CTL-E</button>
 <button id="pasteCP" type="button" onclick=pastecode()>paste code</button>
 <button id="saveCP" type="button" onclick=saveCPcode()>save code</button>
-<button id="uploadCP" type="button" onclick=uploadCPcode()>Upload Code</button>
+<button id="uploadCP" type="button" onclick=uploadCPcode()>Upload Code (USB)</button>
+<button id="SendBTUploadCode" type="button" onclick=sendCodeBT()>Upload Code (BT)</button>
 <button id="SerialConnectButton" type="button">Connect USB</button>
-<button id="reboot" type="button" onclick=rebootCP()>Reset Robot</button>
-<button id="REPL" onclick="myTerminal()">Toggle REPL Terminal</button>
+<button id="BTConnectButton" type="button" onclick=connect()>Connect BT</button>
+<!--button id="reboot" type="button" onclick=rebootCP()>Reset Robot</button-->
+<button id="REPL" onclick="myTerminal()">REPL</button>
 
 <div style="height: 3vh; width: 100%; background-color: #263238;"></div>
 <div id="term" style="display: none;"></div>
@@ -861,6 +865,42 @@ Company: PITSCO Education LLC
 //  catch(err){}
 //}
 
+
+async function sendCodeBT(code_){
+  let code = code_ == undefined ? Blockly.Python.workspaceToCode(Code.workspace) : code_;
+  if (device){
+  if (code) {
+      window.alert("Press OK to upload code using Bluetooth.")
+      code = code.replace(/\n/g, "\r");
+      code+='\r\r'; //Snek workaround
+      code = "code=r'''" + code  + "'''";
+    //  serialWrite('\x05${code}\x04');
+    send('\r\r');
+    for (let i = 1; i <= 25; i++) {   //send several code interrupts
+      send('\x03');
+      await sleepNow(2);  // 2ms pause
+    }
+
+    send('\r');
+    send('\x05');         // enter paste mode
+    send(`${code}`);      // paste the code over BT
+    send('\x04');         // exit paste mode
+    send('\r');
+    var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython -- save code to file
+    savePY += '\r\r';
+    send(savePY);
+    send('\r');
+    send("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
+    send('\r');
+
+  }else{
+    window.alert("No code in the workspace to upload.");
+  }
+}else{
+    window.alert("Robot is not connected to Bluetooth.");
+}
+
+}
 
   function myTerminal() {
     var x = document.getElementById("term");
@@ -887,12 +927,10 @@ function enterMicroPythonPasteMode() {
 const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 async function uploadCPcode(code_){
-
   let code = code_ == undefined ? Blockly.Python.workspaceToCode(Code.workspace) : code_;
-
   if (port){
     if (code) {
-        window.alert("Press OK to upload code.")
+        window.alert("Press OK to upload code using USB.")
         code = code.replace(/\n/g, "\r");
         code+='\r\r'; //Snek workaround
         code = "code=r'''" + code  + "'''";
@@ -903,20 +941,22 @@ async function uploadCPcode(code_){
         await sleepNow(2);  // 2ms pause
       }
       serialWrite('\r');
-      serialWrite('\x05');
+      serialWrite('\x05');      // enter REPL paste mode
       serialWrite(`${code}`);
-      serialWrite('\x04');
+      serialWrite('\x04');      // exit paste mode
       serialWrite('\r');
-      var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ CircuitPython
-  //  var savePY = "with open('main.py','w') as f: f.write(code)"; // ++ MicroPython
+      var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython
       savePY += '\r\r';
       serialWrite(savePY);
-      serialWrite('\x04');
+  //    serialWrite('\x04');  // soft MPY reboot -- don't do this, it knocks off the BT connection
+      serialWrite('\r');
+      serialWrite("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
+      serialWrite('\r');
     }else{
       window.alert("No code in the workspace to upload.");
     }
   }else{
-      window.alert("Robot is not connected.");
+      window.alert("Robot is not connected to USB.");
   }
 }
 
@@ -1065,41 +1105,34 @@ async function serialWrite(data) {
 	}
 }
 
-async function getBT(){
-  navigator.bluetooth.requestDevice({
-  acceptAllDevices: true,
-  optionalServices: ['battery_service'] // Required to access service later.
-})
-.then(device => { /* … */ })
-.catch(error => { console.error(error); });
-}
 
 async function getReader() {
   port = await navigator.serial.requestPort({ filters });
 
   port.addEventListener('disconnect', (event) => {
-    // notify that the port (specificaly LUMA) has become unavailable
+    // notify that the port has become unavailable
     console.log("Device is Disconnected");
-    document.getElementById('SerialConnectButton').innerText = "Connect MSL";
+    document.getElementById('SerialConnectButton').innerText = "Connect USB";
     document.getElementById('SerialConnectButton').style.color = '#FF3393'; // magenta
     document.getElementById('uploadCP').style.color = '#817F86'; // gray
-    document.getElementById('reboot').style.color = '#817F86';   // gray
+  //  document.getElementById('reboot').style.color = '#817F86';   // gray
     port.close();
     port = undefined;
+
   });
 
   var e = document.getElementById("SerialSpeed");
 	var strSpd = e.options[e.selectedIndex].value;
 	//var speed = parseInt(strSpd);
   var speed = 115200;   // set baud to 115200 as the default
-  rebootCP();
+  //rebootCP(); // -- removed this reboot -- it knocks off the BT connection
 	await port.open({ baudRate: [speed] });
   console.log("Device is most definitely connected");
   document.getElementById('SerialConnectButton').innerText = "USB connected";
   document.getElementById('SerialConnectButton').style.color = '#ACFF33'; // lime green
   document.getElementById('uploadCP').style.color = '#fff'; // white
-  document.getElementById('reboot').style.color = '#fff';   // white
-  rebootCP();
+  //document.getElementById('reboot').style.color = '#fff';   // white
+  //rebootCP(); // -- removed this reboot -- it knocks off the BT connection
 	document.getElementById('SerialSpeed').disabled = true;
 
     //    connectButton.innerText = 'Disconnect';

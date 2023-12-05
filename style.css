@@ -183,6 +183,28 @@ button.notext {
   font-size: 16px;
   padding: 5px 10px;
 }
+
+#BTConnectButton{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #FF3393;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+#SendBTUploadCode{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #817F86;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+}
+
+
+
+
 #SerialDisconnectButton{
   margin: 3px 3px 3px 3px;
   background-color: #263238;
