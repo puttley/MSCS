@@ -20,6 +20,46 @@ var sendInProgress = false;
 var devices = JSON.parse(localStorage.apps_nus_devices || '{}');
 
 
+async function sendCodeBT(code_){
+  let code = code_ == undefined ? Blockly.Python.workspaceToCode(Code.workspace) : code_;
+  if (device){
+  if (code) {
+      window.alert("Press OK to upload code using Bluetooth.")
+      code = code.replace(/\n/g, "\r");
+      code+='\r\r'; //Snek workaround
+      code = "code=r'''" + code  + "'''";
+    //  serialWrite('\x05${code}\x04');
+    send('\r\r');
+    for (let i = 1; i <= 25; i++) {   //send several code interrupts
+      send('\x03');
+      await sleepNow(2);  // 2ms pause
+    }
+
+    send('\r');
+    send('\x05');         // enter paste mode
+    send(`${code}`);      // paste the code over BT
+    send('\x04');         // exit paste mode
+    send('\r');
+    var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython -- save code to file
+    savePY += '\r\r';
+    send(savePY);
+    send('\r');
+    await sleepNow(100);  // 100ms pause to wait for save complete before run
+    var runPY = ("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
+    runPY += '\r\r';
+    send(runPY);
+    send('\r');
+
+  }else{
+    window.alert("No code in the workspace to upload.");
+  }
+}else{
+    window.alert("Robot is not connected to Bluetooth.");
+}
+
+}
+
+
 function onScanResult(newDevice) {
   device = newDevice;
   if (device.connected) {
