@@ -870,14 +870,9 @@ Company: PITSCO Education LLC
     if (x.style.display === "none") {
       x.style.display = "block";
       document.getElementById('REPL').style.color = '#fff164'; // lime YELLOW
-      //w = window.open();
-      //w.document.title = 'REPL Output';
-      //const sTerm = setInterval(printWindow, 250);
     } else {
       x.style.display = "none";
       document.getElementById('REPL').style.color = '#fff'; // white
-      //w.close();
-      //clearInterval(sTerm);
     }
 }
 
@@ -889,6 +884,7 @@ function enterMicroPythonPasteMode() {
 
 const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
+
 async function uploadCPcode(code_){
   let code = code_ == undefined ? Blockly.Python.workspaceToCode(Code.workspace) : code_;
   if (port){
@@ -897,27 +893,29 @@ async function uploadCPcode(code_){
         code = code.replace(/\n/g, "\r");
         code+='\r\r'; //Snek workaround
         code = "code=r'''" + code  + "'''";
-      //  serialWrite('\x05${code}\x04');
-      serialWrite('\r\r');
-      for (let i = 1; i <= 25; i++) {   //send several code interrupts
-        serialWrite('\x03');
-        await sleepNow(2);  // 2ms pause
-      }
+        serialWrite('\r\r');
+        for (let i = 1; i <= 25; i++) {   //send several code interrupts to interrupt code that is running
+          serialWrite('\x03');
+          await new Promise(resolve => setTimeout(resolve, 10)); // 10ms pauses
+        }
+
       serialWrite('\r');
+      await new Promise(resolve => setTimeout(resolve, 10)); // 10ms pauses
       serialWrite('\x05');      // enter REPL paste mode
-      serialWrite(`${code}`);
-      serialWrite('\x04');      // exit paste mode
-      serialWrite('\r');
-      var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython
-      savePY += '\r\r';
-      serialWrite(savePY);
+      await new Promise(resolve => setTimeout(resolve, 1000)); // pause for 1 second for controller to enter paste mode
+      serialWriteChunk(`${code}`);
+  //    serialWrite('\x04');      // exit paste mode
+  //    serialWrite('\r');
+  //    var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython
+  //    savePY += '\r\r';
+  //    serialWrite(savePY);
   //    serialWrite('\x04');  // soft MPY reboot -- don't do this, it knocks off the BT connection
-      serialWrite('\r');
-      await sleepNow(100);  // 100ms pause to wait for save complete before run
-      var runPY = ("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
-      runPY += '\r\r';
-      serialWrite(runPY);
-      serialWrite('\r');
+  //    serialWrite('\r');
+  //    await sleepNow(100);  // 100ms pause to wait for save complete before run
+  //    var runPY = ("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
+  //    runPY += '\r\r';
+  //    serialWrite(runPY);
+  //    serialWrite('\r');
     }else{
       window.alert("No code in the workspace to upload.");
     }
@@ -1060,6 +1058,33 @@ else {
 let lineBuffer = '';
 let latestValue = 0;
 
+async function serialWriteChunk(data) {
+        var delay = 4;  // ms delay between writes  -- most browsers can't do any less the 4ms
+        const encoder = new TextEncoder();
+
+    if (port && port.writable) {
+        const writer = port.writable.getWriter();
+        for (let i = 0; i < data.length; i += 10) {   // 10 is the chunk size -- controls upload speed !!
+            const chunk = data.slice(i, i + 10);
+            writer.write(encoder.encode(chunk));
+            await new Promise(resolve => setTimeout(resolve, delay));
+        }
+        writer.write(encoder.encode('\x04'));
+        writer.write(encoder.encode('\r'));
+        writer.write(encoder.encode('\r'));
+        var savePY = "with open('code.py','w') as f: f.write(code)" +'\r\r'; // ++ MicroPython save buffer to code.py
+        writer.write(encoder.encode(savePY));
+        writer.write(encoder.encode('\r'));
+        await new Promise(resolve => setTimeout(resolve, 100)); // 100ms pause to save before running
+        var runPY = "exec(open('code.py').read())" +'\r\r';     // execute the script
+        writer.write(encoder.encode(runPY));
+        writer.write(encoder.encode('\r'));
+        writer.releaseLock();
+    }
+  }
+
+
+
 async function serialWrite(data) {
 	encoder = new TextEncoder();
 	const dataArrayBuffer = encoder.encode(data);
@@ -1107,6 +1132,7 @@ async function getReader() {
         const appendStream = new WritableStream({
         write(chunk) {
 	      term.write(chunk);
+
           }
         });
 

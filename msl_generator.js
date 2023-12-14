@@ -129,7 +129,7 @@ Blockly.Python['servo_set_positions'] = function(block) {
 
 Blockly.Python['get_servo_position'] = function(block) {
   var dropdown_servo = block.getFieldValue('servo');
-  var code = 'msl.getServoPosition(' + dropdown_servo + ')\n';
+  var code = 'msl.getServoPosition(' + dropdown_servo + ')';
   return [code, Blockly.Python.ORDER_NONE];
 };
 
