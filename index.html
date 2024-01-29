@@ -849,21 +849,55 @@ Company: PITSCO Education LLC
 <!--button id="reboot" type="button" onclick=rebootCP()>Reset Robot</button-->
 <button id="REPL" onclick="myTerminal()">REPL</button>
 
+<button id="btName" onclick="btName()">BT Name</button>
+
 <div style="height: 3vh; width: 100%; background-color: #263238;"></div>
 <div id="term" style="display: none;"></div>
 
+
+
+
 <script>
 
+  const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
-//const sTerm = setInterval(printWindow, 250);
-//var w;
+  async function btName() {   // change robot BT name
+    let text;
+    let name = prompt("Please Enter new BT Name", "robot");
+    if (name == null || name == "") {
+      console.log("User cancelled the prompt");
+    } else {
+      text = "bt_name =" + '"' + "ARCHER-" + name + '"'; // new bt name with pre-fix added
+      console.log(text);
+       if (port){   // check USB connection
+          serialWrite('\r\r');
+          for (let i = 1; i <= 25; i++) {   //send several code interrupts to interrupt code that is running
+            serialWrite('\x03');
+            await new Promise(resolve => setTimeout(resolve, 10)); // 10ms pauses
+          }
 
-//function printWindow(){
-//  try{
-//    w.document.body.innerHTML = window.document.getElementById('term').innerHTML;
-//  }
-//  catch(err){}
-//}
+        serialWrite('\r');
+        await new Promise(resolve => setTimeout(resolve, 10)); // 10ms pauses
+        serialWrite('\x05');      // enter REPL paste mode
+        await new Promise(resolve => setTimeout(resolve, 1000)); // pause for 1 second for controller to enter paste mode
+        text = text.replace(/\n/g, "\r");   // not sure i need this ???
+        text = "code=r'''" + text  + "'''";
+        serialWrite(text);
+        serialWrite('\x04');
+        serialWrite('\r');
+        serialWrite('\r');
+        var saveBT = "with open('bt_config.py','w') as f: f.write(code)" +'\r\r'; // write bt_config.py to controller
+        serialWrite(saveBT);
+        serialWrite('\r');
+        serialWrite('\r');
+        serialWrite('\x04');  // reboot the robot after BT name change
+      }else{
+        window.alert("Robot is not connected to USB."); // first connect to USB to change BT name
+      }
+    }
+
+  }
+
 
   function myTerminal() {
     var x = document.getElementById("term");
@@ -882,7 +916,7 @@ function enterMicroPythonPasteMode() {
   pastemode();
 }
 
-const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
+//const sleepNow = (delay) => new Promise((resolve) => setTimeout(resolve, delay))
 
 
 async function uploadCPcode(code_){

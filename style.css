@@ -155,6 +155,17 @@ button.notext {
   display: true;
 }
 
+#btName{
+  margin: 3px 3px 3px 3px;
+  background-color: #263238;
+  color: #fff;
+  font-weight: normal;
+  font-size: 16px;
+  padding: 5px 10px;
+  display: true;
+}
+
+
 #loadBlocks{
   margin: 3px 3px 3px 3px;
   background-color: #263238;
