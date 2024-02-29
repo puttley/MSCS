@@ -1,11 +1,16 @@
+
+//Blockly.Blocks.math_change.disabled = true; // disables this block in variables
+
+var help_URL = 'https://www.pitsco.com'
+
 Blockly.Blocks['program_end'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("program end");
     this.setPreviousStatement(true, null);
     this.setColour('#eea011');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Terminates the execution of program code that is running.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -15,8 +20,8 @@ Blockly.Blocks['program_begin'] = {
         .appendField("program start");
     this.setNextStatement(true, null);
     this.setColour('#eea011');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Initializes the SEEKER controller. Must be placed at the beginning of program code.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -28,21 +33,21 @@ Blockly.Blocks['button_start'] = {
         .appendField(new Blockly.FieldDropdown([["pressed","true"], ["unpressed","false"]]), "state");
     this.setOutput(true, null);
     this.setColour('#eea011');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns the logic state of the start button. Pressed is True or 1. Unpressed is False or 0");
+ this.setHelpUrl(help_URL);
   }
 };
 
 Blockly.Blocks['buttons_status'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField(new Blockly.FieldDropdown([["start","start"], ["a","a"], ["b","b"], ["c","c"], ["d","d"]]), "button")
+        .appendField(new Blockly.FieldDropdown([["Start","start"], ["A","a"], ["B","b"], ["C","c"], ["D","d"]]), "button")
         .appendField("button is pressed");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour('#eea011');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns the logic state of the selected button. Pressed is True or 1. Unpressed is False or 0.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -60,8 +65,8 @@ Blockly.Blocks['motor_set_power'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set the selected DC motor power level. Range is 0 - 100%. A positive power results in a CW spin direction. A negative power results in a CCW spin direction.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -80,8 +85,8 @@ Blockly.Blocks['motor_set_speed'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set the selected DC motor constant speed to 0 - 100%. A positive speed results in a CW spin direction. A negative speed results in a CCW spin direction.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -108,8 +113,8 @@ Blockly.Blocks['motor_set_powers'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set each DC motor power level. Range is 0 - 100%. A positive power results in a CW spin direction. A negative power results in a CCW spin direction.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -135,8 +140,8 @@ Blockly.Blocks['motor_set_speeds'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set each DC motor to a constant speed. Range is 0 - 100%. A positive speed results in a CW spin direction. A negative speed results in a CCW spin direction.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -159,8 +164,8 @@ Blockly.Blocks['motor_rotate_degrees'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Rotate the selected DC motor, at a set constant speed, for a set number of degrees. The DC motor will hold it's position once the degree target has been reached. A positive degree number results in a CW rotation. A negative degree number results in a CCW rotation.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -182,8 +187,8 @@ Blockly.Blocks['motor_rotate_target'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Rotate the selected DC motor, at a constant speed, to a set encoder count. The motor will hold it's position once the target count has been reached. One DC motor shaft rotation is equal to 2200 counts. CW rotation of the DC motor shaft increments the encoder count. CCW rotation of the DC motor shaft decrements the encoder count.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -194,13 +199,13 @@ Blockly.Blocks['motor_stop'] = {
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "motor");
     this.appendDummyInput()
         .appendField("stop with")
-        .appendField(new Blockly.FieldDropdown([["no brake","no brake"], ["brake","brake"]]), "brake");
+        .appendField(new Blockly.FieldDropdown([["coast","coast"], ["brake","brake"]]), "brake");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Stop the selected DC motor using a 'brake' or 'coast' action.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -214,8 +219,8 @@ Blockly.Blocks['motor_busy'] = {
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns True or 1 if the selected DC motor is in process of moving to a encoder count or degrees target. Returns False or 0 when the target is reached.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -231,8 +236,8 @@ Blockly.Blocks['set_motor_invert'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour('#587081');
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Inverts the direction of rotation for the selected DC motor. This harmonizes the control of left and right facing wheel drive motors on a mobile robot.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -251,8 +256,8 @@ Blockly.Blocks['servo_set_speed'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set the rotation speed of the selected servo to 0 - 100%.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -278,8 +283,8 @@ Blockly.Blocks['servo_set_speeds'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Set the rotation speed of each servo to 0 - 100%.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -298,8 +303,8 @@ Blockly.Blocks['servo_set_position'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Rotate the selected servo to a set position between 0 - 180 degrees. 90 degrees is the servo center position.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -325,21 +330,21 @@ Blockly.Blocks['servo_set_positions'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Rotate each servo to a set position between 0 - 180 degrees. 90 degrees is the servo center position.");
+ this.setHelpUrl(help_URL);
   }
 };
 
 Blockly.Blocks['get_servo_position'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("get servo")
+        .appendField("servo")
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "servo")
-        .appendField("position");
+        .appendField("get position");
     this.setOutput(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns the position of the selected servo. The position returned is 0 - 180 degrees.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -355,8 +360,8 @@ Blockly.Blocks['set_servo_invert'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#C75052");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Inverts the direction of position rotation of the selected servo. This can be useful when harmonizing the positioning, or movement coordination of servos that are facing in opposite directions.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -391,8 +396,8 @@ Blockly.Blocks['start_driving'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Start driving in the selected direction at 0 - 100% speed. ");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -416,8 +421,8 @@ Blockly.Blocks['spin_turn'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Spin turn in the selected direction, at a set speed, for a set number of degrees. Having 'wait' checked pauses the execution of code until the spin target is reached.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -441,8 +446,8 @@ Blockly.Blocks['pivot_turn'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Pivot turn in the selected direction, at a set speed, for a set number of degrees. Having 'wait' checked pauses the execution of code until the pivot target is reached.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -465,8 +470,8 @@ Blockly.Blocks['drive_distance'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Drive in the selected direction, at a set speed, for a distance in centimeters then stop. Having 'wait' checked pauses the execution of code until the distance is reached.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -485,8 +490,8 @@ Blockly.Blocks['drive_steering'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Start driving in the selected direction. The left and right wheels can be set to spin at different speeds enabling more complex path movements.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -497,8 +502,8 @@ Blockly.Blocks['stop_driving'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Immediately stop the drive wheels.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -511,8 +516,8 @@ Blockly.Blocks['set_drive_invert'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#7B1FA2");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Invert or 'reverse' the driving direction(s) of the robot.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -521,39 +526,124 @@ Blockly.Blocks['get_encoder'] = {
     this.appendDummyInput()
         .appendField("encoder")
         .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "encoder")
-        .appendField("count");
+        .appendField("get count");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour("#ec5b13");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Get the current count value of the selected DC motor encoder.");
+ this.setHelpUrl(help_URL);
   }
 };
 
 Blockly.Blocks['get_lidar'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("ToF Sensor")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"]]), "value");
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("TOF sensor | get distance (mm)");
     this.setInputsInline(true);
     this.setOutput(true, null);
     this.setColour("#ec5b13");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns the distance in millimeters to an object detected by the TOF sensor. Range is approximately 30 - 1000 millimeters.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+Blockly.Blocks['get_sonic'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("ultrasonic sensor | get distance (cm)");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("Returns the distance in centimeters to an object detected by the Ultrasonic sensor. Range is approximately 2 - 350 centimeters.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+Blockly.Blocks['get_color_color'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("color sensor |");
+    this.appendDummyInput()
+        .appendField("return True if")
+        .appendField(new Blockly.FieldDropdown([["red","red"], ["green","green"], ["blue","blue"]]), "color");
+    this.appendValueInput("threshold")
+        .setCheck("Number")
+        .appendField("| threshold =");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("Returns True if selected color is detected. The threshold can be adjusted to increase or decrease sensitivity due to ambient lighting conditions. Recommended threshold range is 0.01 - 1.0.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+Blockly.Blocks['get_color_rgbc_byte'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("color sensor | get")
+        .appendField(new Blockly.FieldDropdown([["red level","red"], ["green level","green"], ["blue level","blue"], ["ambient level","ambient"], ["rgb value","rgb"], ["hex value","hex"]]), "data");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("Returns the red, green, blue or ambient light level. Red, green and blue level ranges are 0 - 255. Ambient level range is 0 - 1000. The rgb and hex value of the detected color can also be returned.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+
+Blockly.Blocks['get_temperature_humidity'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("TH sensor | get");
+    this.appendDummyInput()
+        .appendField(new Blockly.FieldDropdown([["temperature_F","tempf"], ["temperature_C","tempc"], ["humidity_%","humid"]]), "th");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("Returns the selected measurement of temperature or humidity.");
+ this.setHelpUrl("help_URL");
+  }
+};
+
+
+Blockly.Blocks['get_sensor_port_value'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField("sensor port | get")
+        .appendField(new Blockly.FieldDropdown([["analog","analog"], ["digital","digital"]]), "type")
+        .appendField("value");
+    this.setInputsInline(true);
+    this.setOutput(true, null);
+    this.setColour("#ec5b13");
+ this.setTooltip("Returns the analog or digital value read by the selected sensor port.");
+ this.setHelpUrl(help_URL);
   }
 };
 
 Blockly.Blocks['reset_encoders'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("reset encoder")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "encoder");
+        .appendField("encoder")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "encoder")
+        .appendField("reset");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#ec5b13");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Reset the selected DC motor encoder(s) to zero.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -562,16 +652,16 @@ Blockly.Blocks['delay'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("wait for");
-    this.appendDummyInput()
-        .appendField(new Blockly.FieldNumber(0, 0, Infinity, 0.01), "NAME");
+    this.appendValueInput("seconds")
+        .setCheck("Number");
     this.appendDummyInput()
         .appendField("seconds");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour("#eea011");
- this.setTooltip("");
- this.setHelpUrl("");
+    this.setColour('#eea011');
+ this.setTooltip("Pause program execution for amount of time in seconds.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -588,8 +678,8 @@ Blockly.Blocks['pixel_animate'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#891813");
- this.setTooltip("Show an animation pattern for number of seconds");
- this.setHelpUrl("");
+ this.setTooltip("Show an animation pattern for number of seconds.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -597,7 +687,7 @@ Blockly.Blocks['pixel_blink'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("blink pixel")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "pixel")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["ABCD","ABCD"]]), "pixel")
         .appendField("with");
     this.appendValueInput("color")
         .setCheck("Colour");
@@ -611,8 +701,8 @@ Blockly.Blocks['pixel_blink'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#891813");
- this.setTooltip("Blink the pixels(s) with a color 'x' number of times");
- this.setHelpUrl("");
+ this.setTooltip("Blink the pixel with a selected color for a number of times.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -621,7 +711,7 @@ Blockly.Blocks['pixel_color'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set pixel")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "pixel")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["ABCD","ABCD"]]), "pixel")
         .appendField("to");
     this.appendValueInput("color")
         .setCheck("Colour");
@@ -635,23 +725,82 @@ Blockly.Blocks['pixel_color'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#891813");
- this.setTooltip("Set the pixel to a color and set the brightness.");
- this.setHelpUrl("");
+ this.setTooltip("Set the pixel to a color and set the brightness. Brightness is 0 - 100%. A brightness will not be applied to the color if it is set to a -1.");
+ this.setHelpUrl(help_URL);
   }
 };
+
+Blockly.Blocks['pixel_rgb_value'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("set pixel")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "pixel")
+        .appendField("to RGB value");
+    this.appendValueInput("rgb")
+        .setCheck("String");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#891813");
+ this.setTooltip("");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+Blockly.Blocks['pixel_hex'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("set pixel")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["ABCD","ABCD"]]), "pixel");
+    this.appendValueInput("hex")
+        .setCheck("String")
+        .appendField("to HEX value");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#891813");
+ this.setTooltip("Set the color of the selected pixel to a hexadecimal (HEX) value. Range is #000000 - #ffffff. The HEX value must be a string.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
+Blockly.Blocks['pixel_rgb'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("set pixel")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["ABCD","ABCD"]]), "pixel")
+        .appendField("to RGB level:");
+    this.appendValueInput("red")
+        .setCheck("Number")
+        .appendField("red");
+    this.appendValueInput("green")
+        .setCheck("Number")
+        .appendField("green");
+    this.appendValueInput("blue")
+        .setCheck("Number")
+        .appendField("blue");
+    this.setInputsInline(true);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour("#891813");
+ this.setTooltip("Set the color of the selected pixel to an RGB level. Red, green and blue range is 0 - 255.");
+ this.setHelpUrl(help_URL);
+  }
+};
+
 
 Blockly.Blocks['pixels_off'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("set pixel")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["1234","1234"]]), "pixel")
+        .appendField(new Blockly.FieldDropdown([["A","A"], ["B","B"], ["C","C"], ["D","D"], ["ABCD","ABCD"]]), "pixel")
         .appendField("off");
     this.setInputsInline(true);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#891813");
- this.setTooltip("Turn off selected pixel(s).");
- this.setHelpUrl("");
+ this.setTooltip("Turn off selected pixels.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -661,10 +810,12 @@ Blockly.Blocks['color_random'] = {
         .appendField("random color");
     this.setOutput(true, "Colour");
     this.setColour("#891813");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns a random color.");
+ this.setHelpUrl(help_URL);
   }
 };
+
+
 
 Blockly.Blocks['color_picker'] = {
   init: function() {
@@ -672,8 +823,8 @@ Blockly.Blocks['color_picker'] = {
         .appendField(new Blockly.FieldColour("#ff0000"), "color");
     this.setOutput(true, "Colour");
     this.setColour("#891813");
- this.setTooltip("");
- this.setHelpUrl("");
+ this.setTooltip("Returns the color chosen from the color picker pallette.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -686,8 +837,8 @@ Blockly.Blocks['sound_stop'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#1b84e4");
- this.setTooltip("Turn off sounds.");
- this.setHelpUrl("");
+ this.setTooltip("Stop any current sound being played.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -708,8 +859,8 @@ Blockly.Blocks['sound_note'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#1b84e4");
- this.setTooltip("Play a musical note.");
- this.setHelpUrl("");
+ this.setTooltip("Play a musical note from the dropdown list.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -731,8 +882,8 @@ Blockly.Blocks['sound_tone'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#1b84e4");
- this.setTooltip("Play a tone at a frequency in Hz.");
- this.setHelpUrl("");
+ this.setTooltip("Play a tone at a frequency in Hz. Range is approximately 30 - 20000.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -745,8 +896,8 @@ Blockly.Blocks['sound_effect'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour("#1b84e4");
- this.setTooltip("Play a sound effect");
- this.setHelpUrl("");
+ this.setTooltip("Play a sound effect from the dropdown list.");
+ this.setHelpUrl(help_URL);
   }
 };
 
@@ -761,7 +912,7 @@ Blockly.Blocks['controls_loop_forever'] = {
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
     this.setColour(120);
- this.setTooltip("repeat statements in do loop forever");
- this.setHelpUrl("");
+ this.setTooltip("Repeat statements in a forever loop.");
+ this.setHelpUrl(help_URL);
   }
 };

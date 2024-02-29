@@ -11,7 +11,7 @@ Company: PITSCO Education LLC
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google" value="notranslate">
-  <title>PITSCO MSCS-1 Robot:</title>
+  <title>SEEKER Robot:</title>
   <link rel="stylesheet" href="style.css">
 
   <script src="./msl_blocks.js" defer></script>
@@ -327,32 +327,34 @@ Company: PITSCO Education LLC
     </category>
 
     <category name="Sensors" colour= "#ec5b13">
-      <block type="get_lidar"></block>
-      <block type="get_encoder"></block>
-      <block type="reset_encoders"></block>
+        <block type="get_lidar"></block>
+        <block type="get_sonic"></block>
+        <block type="get_color_color">
+          <value name="threshold">
+            <shadow type="math_number">
+              <field name="NUM">0.05</field>
+            </shadow>
+          </value>
+        </block>
+        <block type="get_color_rgbc_byte"></block>
+        <block type="get_temperature_humidity"></block>
+        <block type="get_sensor_port_value"></block>
+        <block type="get_encoder"></block>
+        <block type="reset_encoders"></block>
     </category>
 
     <category name="Control" colour= "#eea011">
       <block type="program_begin"></block>
       <block type="program_end"></block>
-      <block type="delay"></block>
-      <block type="buttons_status"></block>
-    </category>
-
-    <!--category name="Servos" colour= "#db2457">
-      <block type="move_servo">
-        <value name="position">
+      <block type="delay">
+        <value name="seconds">
           <shadow type="math_number">
-            <field name="NUM">90</field>
-          </shadow>
-        </value>
-        <value name="speed">
-          <shadow type="math_number">
-            <field name="NUM">50</field>
+            <field name="NUM">1</field>
           </shadow>
         </value>
       </block>
-    </category-->
+      <block type="buttons_status"></block>
+    </category>
 
     <category name="Pixels" colour= "#741e1c">
       <block type="pixel_color">
@@ -367,6 +369,30 @@ Company: PITSCO Education LLC
         <value name="brightness">
           <shadow type="math_number">
             <field name="NUM">50</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pixel_rgb">
+        <value name="red">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+        <value name="green">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+        <value name="blue">
+          <shadow type="math_number">
+            <field name="NUM">255</field>
+          </shadow>
+        </value>
+      </block>
+      <block type="pixel_hex">
+        <value name="hex">
+          <shadow type="text">
+            <field name="TEXT">#ff0000</field>
           </shadow>
         </value>
       </block>
@@ -863,11 +889,11 @@ Company: PITSCO Education LLC
 
   async function btName() {   // change robot BT name
     let text;
-    let name = prompt("Please Enter new BT Name", "robot");
+    let name = prompt("Please Enter new BT Name", "myRobot");
     if (name == null || name == "") {
       console.log("User cancelled the prompt");
     } else {
-      text = "bt_name =" + '"' + "ARCHER-" + name + '"'; // new bt name with pre-fix added
+      text = "bt_name =" + '"' + "SEEKER-" + name + '"'; // new bt name with pre-fix added
       console.log(text);
        if (port){   // check USB connection
           serialWrite('\r\r');
@@ -1106,11 +1132,11 @@ async function serialWriteChunk(data) {
         writer.write(encoder.encode('\x04'));
         writer.write(encoder.encode('\r'));
         writer.write(encoder.encode('\r'));
-        var savePY = "with open('code.py','w') as f: f.write(code)" +'\r\r'; // ++ MicroPython save buffer to code.py
+        var savePY = "with open('main.py','w') as f: f.write(code)" +'\r\r'; // ++ MicroPython save buffer to main.py
         writer.write(encoder.encode(savePY));
         writer.write(encoder.encode('\r'));
         await new Promise(resolve => setTimeout(resolve, 100)); // 100ms pause to save before running
-        var runPY = "exec(open('code.py').read())" +'\r\r';     // execute the script
+        var runPY = "exec(open('main.py').read())" +'\r\r';     // execute the script
         writer.write(encoder.encode(runPY));
         writer.write(encoder.encode('\r'));
         writer.releaseLock();

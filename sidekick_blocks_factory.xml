@@ -646,17 +646,13 @@
           </block>
         </statement>
         <next>
-          <block type="input_dummy" id="8F|SFH2VWRDC(SfSu=._">
+          <block type="input_value" id="rQCVtJ^3EGtumw`J2sH[">
+            <field name="INPUTNAME">seconds</field>
             <field name="ALIGN">LEFT</field>
-            <statement name="FIELDS">
-              <block type="field_number" id="-p?@LSv1:nyeNk=z%8hd">
-                <field name="VALUE">0</field>
-                <field name="FIELDNAME">NAME</field>
-                <field name="MIN">0</field>
-                <field name="MAX">Infinity</field>
-                <field name="PRECISION">0.25</field>
-              </block>
-            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="S$:lvM{=9RQT):;D@hSm"></shadow>
+              <block type="type_number" id="U~gkMf|CXdEDOjO`as*J"></block>
+            </value>
             <next>
               <block type="input_dummy" id="Jm*fUM6Y#;ap!h7t7Ri@">
                 <field name="ALIGN">LEFT</field>

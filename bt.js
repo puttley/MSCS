@@ -10,7 +10,7 @@
 const NUS_SERVICE_UUID      = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
 const NUS_CHARACTERISTIC_TX = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
 const NUS_CHARACTERISTIC_RX = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
-const DEVICE_BT_NAME_PREFIX = 'ARCHER';
+const DEVICE_BT_NAME_PREFIX = 'SEEKER';
 
 var device = null;
 var nusTx = null;
@@ -40,12 +40,12 @@ async function sendCodeBT(code_){
     send(`${code}`);      // paste the code over BT
     send('\x04');         // exit paste mode
     send('\r');
-    var savePY = "with open('code.py','w') as f: f.write(code)"; // ++ MicroPython -- save code to file
+    var savePY = "with open('main.py','w') as f: f.write(code)"; // ++ MicroPython -- save code to file
     savePY += '\r\r';
     send(savePY);
     send('\r');
     await sleepNow(100);  // 100ms pause to wait for save complete before run
-    var runPY = ("exec(open('code.py').read())");  // run the code with a terminal command -- won't knock off BT connection
+    var runPY = ("exec(open('main.py').read())");  // run the code with a terminal command -- won't knock off BT connection
     runPY += '\r\r';
     send(runPY);
     send('\r');

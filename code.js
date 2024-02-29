@@ -577,6 +577,12 @@ Code.initLanguage = function() {
   document.getElementById('REPL').title = MSG['terminalTooltip'];
   document.getElementById('uploadCP').title = MSG['uploadBlocksTooltip'];
   document.getElementById('SerialConnectButton').title = MSG['connectBlocksTooltip'];
+  document.getElementById('BTConnectButton').title = MSG['connectBTTooltip'];
+  document.getElementById('SerialConnectButton').title = MSG['connectUSBTooltip'];
+  document.getElementById('SendBTUploadCode').title = MSG['uploadBTTooltip'];
+  document.getElementById('uploadCP').title = MSG['uploadUSBTooltip'];
+  document.getElementById('btName').title = MSG['btNameTooltip'];
+
   //document.getElementById('reboot').title = MSG['resetBlocksTooltip'];
 
 
