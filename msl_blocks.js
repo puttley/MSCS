@@ -619,7 +619,7 @@ Blockly.Blocks['get_rotary_sensor'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("port")
-        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"], ["5","5"]]), "port")
+        .appendField(new Blockly.FieldDropdown([["1","1"], ["2","2"], ["3","3"], ["4","4"]]), "port")
         .appendField("rotary sensor | get value");
     this.setInputsInline(true);
     this.setOutput(true, null);
