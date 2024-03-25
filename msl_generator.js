@@ -298,6 +298,12 @@ Blockly.Python['get_temperature_humidity'] = function(block) {
   return [code, Blockly.Python.ORDER_NONE];
 };
 
+Blockly.Python['get_rotary_sensor'] = function(block) {
+  var dropdown_port = block.getFieldValue('port');
+  var code = 'skr.getRotarySensor(' + dropdown_port + ')';
+  return [code, Blockly.Python.ORDER_NONE];
+};
+
 Blockly.Python['get_sensor_port_value'] = function(block) {
   var dropdown_port = block.getFieldValue('port');
   var dropdown_type = block.getFieldValue('type');
