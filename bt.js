@@ -115,6 +115,10 @@ function onDevice() {
   });
 }
 
+// Array of names to filter for
+var namesToFilterFor = ['SEEKER', 'ESP32', 'MPY'];
+// Create an array of filters for each name
+var filterr = namesToFilterFor.map(name => ({ namePrefix: name }));
 
 async function connect() {
   if (device && device.gatt.connected) {
@@ -126,9 +130,9 @@ async function connect() {
   }
   navigator.bluetooth.requestDevice({
 
-    //filters:[{namePrefix: [DEVICE_BT_NAME_PREFIX]},],
+    filters: filterr,
 
-      acceptAllDevices:true,
+    //  acceptAllDevices:true,
       optionalServices: [NUS_SERVICE_UUID]
 
   }).then(onScanResult).catch(function(e) {
